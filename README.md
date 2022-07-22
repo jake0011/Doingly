@@ -2,4 +2,4 @@
 
 This team is made up of 
 1. Edem Jonathan Akuaku.
-2. Kusi Emmanuel Derrcik Sarbeng
+2. Kusi Emmanuel Derrick Sarbeng
