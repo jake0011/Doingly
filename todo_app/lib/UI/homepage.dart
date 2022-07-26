@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:todo_app/components/DoinglyPage/doingly_page.dart';
 import 'package:todo_app/components/global.dart';
@@ -16,7 +15,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      color: Colors.yellow,
+      color: Colors.brown,
       home: SafeArea(
         child: DefaultTabController(
           length: 3,
@@ -27,8 +26,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 TabBarView(
                   children: [
                     Container(
-                      color: Colors.amber,
-                      child: const MyDoinglyPage(),
+                      color: Colors.brown,
+                      // ignore: prefer_const_constructors
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 210),
+                        child: const MyDoinglyPage(),
+                      ),
                     ),
                     Container(
                       color: listColor,
@@ -96,11 +99,10 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               backgroundColor: Colors.white,
             ),
-            backgroundColor: Colors.white,
+            backgroundColor: Colors.brown,
           ),
         ),
       ),
     );
   }
 }
-
