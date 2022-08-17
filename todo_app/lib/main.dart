@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'UI/homepage.dart';
+import 'package:todo_app/Screens/Welcome/welcome_screen.dart';
+import 'package:todo_app/constants.dart';
+// import 'package:dio/dio.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,58 +14,24 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'TodoApp',
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Auth',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primaryColor: kPrimaryColor,
+        scaffoldBackgroundColor: Colors.white,
       ),
-      home: const MyHomePage(title: ''),
+      home:WelcomeScreen(),
     );
+
+
+// void getHttp() async {
+//   try {
+//     var response = await Dio().get('http://www.google.com');
+//     print(response);
+//   } catch (e) {
+//     print(e);
+//   }
+// }
+
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // Scaffold(
-//       appBar: AppBar(
-//       title: Text(widget.title),
-//       ),
-//       body: Center(
-
-//         child: Column(
-
-//           mainAxisAlignment: MainAxisAlignment.center,
-//           children: const <Widget>[
-
-//                     ],
-//         ),
-//       ),
-//       floatingActionButton: FloatingActionButton(
-//         onPressed: (){},
-//         tooltip: 'Increment',
-//         child: const Icon(Icons.add),
-//       ), // This trailing comma makes auto-formatting nicer for build methods.
-//     );
-//

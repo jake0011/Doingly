@@ -14,7 +14,7 @@ import 'package:flutter/material.dart'
         StatefulWidget,
         Text,
         Widget;
-import 'package:todo_app/components/global.dart';
+import 'package:todo_app/models/global.dart';
 
 class MyDoinglyPage extends StatefulWidget {
   const MyDoinglyPage({Key? key}) : super(key: key);

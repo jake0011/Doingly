@@ -1,10 +1,10 @@
 
 import 'package:flutter/material.dart';
-import 'package:frontendpages/Screens/Login/login_screen.dart';
-import 'package:frontendpages/component/already_have_an_account.dart';
-import 'package:frontendpages/component/rounded_button.dart';
-import 'package:frontendpages/component/rounded_input_field.dart';
-import 'package:frontendpages/component/rounded_password_field.dart';
+import 'package:todo_app/Screens/Login/login_screen.dart';
+import 'package:todo_app/component/already_have_an_account.dart';
+import 'package:todo_app/component/rounded_button.dart';
+import 'package:todo_app/component/rounded_input_field.dart';
+import 'package:todo_app/component/rounded_password_field.dart';
 import '../../Login/components/background.dart';
 import '../../Login/components/ordivider.dart';
 import '../../Login/components/ordivider_screen.dart';

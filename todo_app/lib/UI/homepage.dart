@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:todo_app/components/DoinglyPage/doingly_page.dart';
-import 'package:todo_app/components/global.dart';
+import 'package:todo_app/Screens/homepage/DoinglyPage/doingly_page.dart';
+import 'package:todo_app/Screens/homepage/global.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);

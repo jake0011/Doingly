@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:frontendpages/Screens/Welcome/components/body.dart';
+import 'package:todo_app/Screens/Welcome/components/body.dart';
 
 
 class WelcomeScreen extends StatelessWidget {

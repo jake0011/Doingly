@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:frontendpages/Screens/Login/login_screen.dart';
-import 'package:frontendpages/Screens/SignUp/signup_screen.dart';
-import 'package:frontendpages/Screens/Welcome/components/background.dart';
-import 'package:frontendpages/component/rounded_button.dart';
+import 'package:todo_app/Screens/Login/login_screen.dart';
+import 'package:todo_app/Screens/SignUp/signup_screen.dart';
+import 'package:todo_app/Screens/Welcome/components/background.dart';
+import 'package:todo_app/component/rounded_button.dart';
 
 
 class Body extends StatelessWidget {
