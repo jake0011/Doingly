@@ -20,8 +20,10 @@ class LoginBody extends StatelessWidget {
 
     Future getUserData()async {
   try {
+    // = await Dio().get('https://jsonplaceholder.typicode.com/posts/1', data:{'username': 'kofi','password': "ama"});
+    
     var response 
-    = await Dio().post('https://doingly.herokuapp.com/todo', data:{'username': 'kofi','password': "ama"});
+    = await Dio().get('https://jsonplaceholder.typicode.com/posts/1');
     print(response.data);
   } catch (e) {
     print(e);
@@ -44,24 +46,25 @@ class LoginBody extends StatelessWidget {
           ),
           RoundedPasswordField(onChanged: (value) {},
           ),
+          
 
            SizedBox(height: size.height*0.01,),
               RoundedButton(
                 text: "LOGIN",
                 onPressed: (){
-                  getUserData();
-                },
-//                 onPressed: () {Navigator.pushReplacement(
-//  context,MaterialPageRoute(builder: (context) => const MyHomePage(title: '',)),);},
-
+                  print("log");
+                   getUserData();
+                   },
                 ),
+
+                
                 SizedBox(height: size.height*0.01,),
                 AlreadyHaveAnAccountCheck(
                   onPressed: () {
                     Navigator.pushReplacement(
 context,MaterialPageRoute(builder: (context) => SignUpScreen()),);;
                   },
-                ),
+                ), 
       ],
     ),
     );

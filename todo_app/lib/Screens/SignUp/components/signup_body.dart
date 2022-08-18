@@ -2,7 +2,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:todo_app/Screens/Login/login_screen.dart';
-import 'package:todo_app/UI/homepagebody.dart';
 import 'package:todo_app/component/already_have_an_account.dart';
 import 'package:todo_app/component/rounded_button.dart';
 import 'package:todo_app/component/rounded_input_field.dart';
@@ -20,14 +19,17 @@ class Body extends StatelessWidget {
   }) : super(key: key);
 
 
-  @override  Future getUserData()async {
+    Future getUserData()async {
   try {
+    // = await Dio().get('https://jsonplaceholder.typicode.com/posts/1', data:{'username': 'kofi','password': "ama"});
     var response 
-    = await Dio().post('https://doingly.herokuapp.com/todo', data:{'firstName': 'fii','LastName': "ama", 'username':'kofi', 'password':'Successful'});
+    = await Dio().get('https://jsonplaceholder.typicode.com/posts/1');
     print(response.data);
   } catch (e) {
     print(e);
   }
+
+  
 }
   Widget build(BuildContext context) {
 
@@ -102,4 +104,5 @@ class Body extends StatelessWidget {
         );
   }
 }
+
 
