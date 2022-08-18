@@ -25,6 +25,7 @@ class LoginBody extends StatelessWidget {
       }
     }
 
+<<<<<<< HEAD
     Size size = MediaQuery.of(context).size;
     return Background(
       child: Column(
@@ -34,10 +35,38 @@ class LoginBody extends StatelessWidget {
             "LOGIN",
             style: TextStyle(
                 fontWeight: FontWeight.bold, fontStyle: FontStyle.italic),
+=======
+    Future getUserData()async {
+  try {
+    // = await Dio().get('https://jsonplaceholder.typicode.com/posts/1', data:{'username': 'kofi','password': "ama"});
+    
+    var response 
+    = await Dio().get('https://jsonplaceholder.typicode.com/posts/1');
+    print(response.data);
+  } catch (e) {
+    print(e);
+  }
+}
+      Size size = MediaQuery.of(context).size;
+    return Background(child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget> [
+        const Text(
+        "LOGIN",
+        style: TextStyle(fontWeight: FontWeight.bold, fontStyle: FontStyle.italic),
+        ),
+        SizedBox(height: size.height*0.01,),
+        Image.asset('assets/images/todolist.png', height: size.height*0.25,),
+        SizedBox(height: size.height*0.01,),
+        RoundedInputField(
+          hintText:"Username:",
+          onChanged: (value) {},
+>>>>>>> f845fe65cb40f004fc191d1199e86a866f799561
           ),
           SizedBox(
             height: size.height * 0.01,
           ),
+<<<<<<< HEAD
           Image.asset(
             'assets/images/todolist.png',
             height: size.height * 0.25,
@@ -84,6 +113,29 @@ class LoginBody extends StatelessWidget {
           ),
         ],
       ),
+=======
+          
+
+           SizedBox(height: size.height*0.01,),
+              RoundedButton(
+                text: "LOGIN",
+                onPressed: (){
+                  print("log");
+                   getUserData();
+                   },
+                ),
+
+                
+                SizedBox(height: size.height*0.01,),
+                AlreadyHaveAnAccountCheck(
+                  onPressed: () {
+                    Navigator.pushReplacement(
+context,MaterialPageRoute(builder: (context) => SignUpScreen()),);;
+                  },
+                ), 
+      ],
+    ),
+>>>>>>> f845fe65cb40f004fc191d1199e86a866f799561
     );
   }
 }
