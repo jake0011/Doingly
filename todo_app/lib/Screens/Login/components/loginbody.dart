@@ -1,5 +1,7 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:todo_app/Screens/SignUp/signup_screen.dart';
+import 'package:todo_app/UI/homepagebody.dart';
 import '../../../component/already_have_an_account.dart';
 import '../../../component/rounded_button.dart';
 import '../../../component/rounded_input_field.dart';
@@ -15,6 +17,16 @@ class LoginBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    Future getUserData()async {
+  try {
+    var response 
+    = await Dio().post('https://doingly.herokuapp.com/todo', data:{'username': 'kofi','password': "ama"});
+    print(response.data);
+  } catch (e) {
+    print(e);
+  }
+}
       Size size = MediaQuery.of(context).size;
     return Background(child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -36,8 +48,12 @@ class LoginBody extends StatelessWidget {
            SizedBox(height: size.height*0.01,),
               RoundedButton(
                 text: "LOGIN",
-                onPressed: () {Navigator.pushReplacement(
-context,MaterialPageRoute(builder: (context) => const LoginBody()),);},
+                onPressed: (){
+                  getUserData();
+                },
+//                 onPressed: () {Navigator.pushReplacement(
+//  context,MaterialPageRoute(builder: (context) => const MyHomePage(title: '',)),);},
+
                 ),
                 SizedBox(height: size.height*0.01,),
                 AlreadyHaveAnAccountCheck(

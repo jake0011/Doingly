@@ -1,6 +1,8 @@
 
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:todo_app/Screens/Login/login_screen.dart';
+import 'package:todo_app/UI/homepagebody.dart';
 import 'package:todo_app/component/already_have_an_account.dart';
 import 'package:todo_app/component/rounded_button.dart';
 import 'package:todo_app/component/rounded_input_field.dart';
@@ -18,8 +20,17 @@ class Body extends StatelessWidget {
   }) : super(key: key);
 
 
-  @override
+  @override  Future getUserData()async {
+  try {
+    var response 
+    = await Dio().post('https://doingly.herokuapp.com/todo', data:{'firstName': 'fii','LastName': "ama", 'username':'kofi', 'password':'Successful'});
+    print(response.data);
+  } catch (e) {
+    print(e);
+  }
+}
   Widget build(BuildContext context) {
+
     Size size = MediaQuery.of(context).size;
     return Background(
       child: Column(
@@ -32,9 +43,6 @@ class Body extends StatelessWidget {
       ),
       ),
           ),
-        // Image.asset("assets/images/frontlogo.png",
-        // height: size.height*0.15,
-        // ),
         RoundedInputField(hintText: "First Name:",
          onChanged: (value) {}),
 
@@ -49,15 +57,20 @@ class Body extends StatelessWidget {
          Padding(
            padding: const EdgeInsets.symmetric(vertical: 4),
            child: RoundedButton(text: "SIGN UP",
-            onPressed: () {Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(builder: (context) => const LoginScreen()),);}),
+            onPressed: 
+            (){
+              getUserData();
+            }
+            // () {Navigator.pushReplacement(
+            // context,
+            // MaterialPageRoute(builder: (context) => const MyHomePage(title: '',)),);}
+            ),
          ),
 
          AlreadyHaveAnAccountCheck(
           login: false,
-          onPressed: 
-          (){ Navigator.pushReplacement(
+          onPressed:
+                    (){ Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder:
            (context) => const LoginScreen()),);}
