@@ -1,12 +1,13 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:todo_app/Screens/SignUp/signup_screen.dart';
-import 'package:todo_app/UI/homepagebody.dart';
+import 'package:todo_app/Screens/Welcome/welcome_screen.dart';
 import '../../../component/already_have_an_account.dart';
 import '../../../component/rounded_button.dart';
 import '../../../component/rounded_input_field.dart';
 import '../../../component/rounded_password_field.dart';
 import '../../Welcome/components/background.dart';
+import 'backbutton.dart';
 
 class LoginBody extends StatelessWidget {
   const LoginBody({
@@ -28,14 +29,14 @@ class LoginBody extends StatelessWidget {
   } catch (e) {
     print(e);
   }
-}
+}    
       Size size = MediaQuery.of(context).size;
     return Background(child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget> [
         const Text(
         "LOGIN",
-        style: TextStyle(fontWeight: FontWeight.bold, fontStyle: FontStyle.italic),
+        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
         ),
         SizedBox(height: size.height*0.01,),
         Image.asset('assets/images/todolist.png', height: size.height*0.25,),
@@ -56,7 +57,6 @@ class LoginBody extends StatelessWidget {
                    getUserData();
                    },
                 ),
-
                 
                 SizedBox(height: size.height*0.01,),
                 AlreadyHaveAnAccountCheck(
@@ -64,7 +64,16 @@ class LoginBody extends StatelessWidget {
                     Navigator.pushReplacement(
 context,MaterialPageRoute(builder: (context) => SignUpScreen()),);;
                   },
-                ), 
+                ),
+      Backbutton(
+        text: " ←",
+        onPressed: () {
+           Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => WelcomeScreen()),
+  );
+        },
+      ),
       ],
     ),
     );
