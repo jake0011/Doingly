@@ -1,7 +1,3 @@
-// ignore_for_file: non_constant_identifier_names
-
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:todo_app/Screens/Welcome/welcome_screen.dart';
 import 'package:todo_app/constants.dart';
@@ -28,37 +24,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-class DataFromAPI extends StatefulWidget {
-  const DataFromAPI({Key? key}) : super(key: key);
-
-  @override
-  State<DataFromAPI> createState() => _DataFromAPIState();
-}
-
-class _DataFromAPIState extends State<DataFromAPI> {
-  Future getUserData()async {
-  try {
-    var response 
-    = await Dio().get('https://doingly.herokuapp.com/todo',);
-    // var jsonData = jsonDecode(response.data);
-    // List<User> users = [];
-
-    // for (var u in jsonData){
-    //   User user = User(u['FirstName'])
-    // } 
-    print(response.data);
-  } catch (e) {
-    print(e);
-  }
-}
-
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
-  }
- }
 
 
 
