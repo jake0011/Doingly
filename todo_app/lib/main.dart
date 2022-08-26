@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/Screens/Welcome/welcome_screen.dart';
 import 'package:todo_app/constants.dart';
-import 'package:dio/dio.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,19 +23,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-
-
-
-  // @override
-  // Widget build(BuildContext context) {
-  //   return Container();
-  // }
-
-
-// class User {
-//   final String FirstName, LastName, Username, Password;
-
-//   User(this.FirstName, this.LastName, this.Username, this.Password);
-  
-// }

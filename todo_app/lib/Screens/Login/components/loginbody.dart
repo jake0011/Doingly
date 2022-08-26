@@ -1,13 +1,14 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:todo_app/Screens/SignUp/signup_screen.dart';
-import 'package:todo_app/Screens/Welcome/welcome_screen.dart';
 import '../../../component/already_have_an_account.dart';
 import '../../../component/rounded_button.dart';
 import '../../../component/rounded_input_field.dart';
 import '../../../component/rounded_password_field.dart';
 import '../../Welcome/components/background.dart';
-import 'backbutton.dart';
+
+
 
 class LoginBody extends StatelessWidget {
   const LoginBody({
@@ -18,13 +19,14 @@ class LoginBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
+    late String username;
+    late String password;
     Future getUserData()async {
   try {
     // = await Dio().get('https://jsonplaceholder.typicode.com/posts/1', data:{'username': 'kofi','password': "ama"});
     
     var response 
-    = await Dio().get('https://jsonplaceholder.typicode.com/posts/1');
+    = await Dio().post('https://doingly.herokuapp.com/login', data: {'username': "seniorman",'password': "stepper" });
     print(response.data);
   } catch (e) {
     print(e);
@@ -34,46 +36,54 @@ class LoginBody extends StatelessWidget {
     return Background(child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget> [
-        const Text(
-        "LOGIN",
-        style: TextStyle(fontWeight: FontWeight.bold, fontSize: ),
+       Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: const [
+        Icon(Icons.arrow_back_outlined),
+        ],
         ),
+         Padding(
+           padding: const EdgeInsets.all(10.0),
+           child: Text(
+        "LOGIN",
+            style:GoogleFonts.lora( textStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),)
+        ),
+         ),
         SizedBox(height: size.height*0.01,),
-        Image.asset('assets/images/todolist.png', height: size.height*0.25,),
+        Image.asset('assets/images/todolist.png', height: size.height*0.15,),
         SizedBox(height: size.height*0.01,),
         RoundedInputField(
           hintText:"Username:",
-          onChanged: (value) {},
+          onChanged: (value) {
+            username = value;
+            
+          },
           ),
-          RoundedPasswordField(onChanged: (value) {},
+          RoundedPasswordField(onChanged: (value) {
+            password = value;
+          },
           ),
-          
-
            SizedBox(height: size.height*0.01,),
               RoundedButton(
                 text: "LOGIN",
                 onPressed: (){
                   print("log");
                    getUserData();
+//                        Navigator.pushReplacement(
+// context,MaterialPageRoute(builder: (context) => const MyHomePage(title: '',)),);
                    },
                 ),
                 
                 SizedBox(height: size.height*0.01,),
-                AlreadyHaveAnAccountCheck(
-                  onPressed: () {
-                    Navigator.pushReplacement(
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: AlreadyHaveAnAccountCheck(
+                    onPressed: () {
+                      Navigator.pushReplacement(
 context,MaterialPageRoute(builder: (context) => SignUpScreen()),);;
-                  },
+                    },
+                  ),
                 ),
-      Backbutton(
-        text: " ←",
-        onPressed: () {
-           Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) => WelcomeScreen()),
-  );
-        },
-      ),
       ],
     ),
     );

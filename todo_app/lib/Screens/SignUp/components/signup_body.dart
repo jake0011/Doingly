@@ -1,6 +1,7 @@
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:todo_app/Screens/Login/login_screen.dart';
 import 'package:todo_app/component/already_have_an_account.dart';
 import 'package:todo_app/component/rounded_button.dart';
@@ -32,17 +33,18 @@ class Body extends StatelessWidget {
   
 }
   Widget build(BuildContext context) {
-
     Size size = MediaQuery.of(context).size;
     return Background(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget> [
-          const Padding(
-            padding:  EdgeInsets.symmetric(vertical: 50),
-            child: Text("WELCOME TO DOINGLY",
-      style: TextStyle(fontWeight: FontWeight.bold, 
+           Padding(
+            padding:  const EdgeInsets.symmetric(vertical: 30),
+            child: Text("SIGN UP!",
+      style: GoogleFonts.lora(textStyle: const TextStyle(fontWeight: FontWeight.bold, 
+      fontSize: 18
       ),
+      )
       ),
           ),
         RoundedInputField(hintText: "First Name:",
@@ -57,7 +59,7 @@ class Body extends StatelessWidget {
          RoundedPasswordField(onChanged: (value) {}),
 
          Padding(
-           padding: const EdgeInsets.symmetric(vertical: 4),
+           padding: const EdgeInsets.symmetric(vertical: 0.5),
            child: RoundedButton(text: "SIGN UP",
             onPressed: 
             (){

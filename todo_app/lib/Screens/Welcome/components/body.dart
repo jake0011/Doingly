@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:todo_app/Screens/Login/login_screen.dart';
 import 'package:todo_app/Screens/SignUp/signup_screen.dart';
 import 'package:todo_app/Screens/Welcome/components/background.dart';
@@ -18,11 +19,11 @@ class Body extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              const Text('WELCOME TO DOINGLY',
-              style: TextStyle(
+               Text('WELCOME TO DOINGLY',
+              style: GoogleFonts.lora(textStyle: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
-                ),
+                ), )
           ),
           SizedBox(height: size.height*0.01,),
               Image.asset('assets/images/welcomeapge.png', height: size.height*0.3,),
