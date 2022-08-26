@@ -36,17 +36,17 @@ class LoginBody extends StatelessWidget {
     return Background(child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget> [
-       Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: const [
-        Icon(Icons.arrow_back_outlined),
-        ],
-        ),
+      //  Row(
+      //   crossAxisAlignment: CrossAxisAlignment.center,
+      //   children: const [
+      //   Icon(Icons.arrow_back_outlined),
+      //   ],
+      //   ),
          Padding(
            padding: const EdgeInsets.all(10.0),
            child: Text(
         "LOGIN",
-            style:GoogleFonts.lora( textStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),)
+            style:GoogleFonts.lora( textStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),)
         ),
          ),
         SizedBox(height: size.height*0.01,),

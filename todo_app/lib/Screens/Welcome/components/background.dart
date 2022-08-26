@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/Screens/Welcome/welcome_screen.dart';
+import '../../Login/backbuttonicon.dart';
+import '../../Login/login_screen.dart';
 
 class Background extends StatelessWidget {
   final Widget child;
+  
+  
   const Background({
-    Key? key,
-     required this.child,
+    Key? key, required this.child,
   }) : super(key: key);
 
 
@@ -18,7 +22,10 @@ class Background extends StatelessWidget {
       child: Stack(
         alignment: Alignment.center,
         children:  <Widget> [
-          
+         backbutton(
+          onPressed:(){
+          }, text: '',
+         ),  
           Positioned(
             top: 0,
             left:0,
@@ -47,3 +54,4 @@ class Background extends StatelessWidget {
     );
   }
 }
+

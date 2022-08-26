@@ -16,7 +16,7 @@ class SocialIcon extends StatelessWidget {
       onTap: onPressed,
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 8),
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
           border: Border.all(
             // width: 1,
