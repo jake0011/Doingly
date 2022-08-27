@@ -28,7 +28,7 @@ class RoundedButton extends StatelessWidget {
         child: ElevatedButton(
               style: ElevatedButton.styleFrom(
         
-            primary: Color(0xffF4A18A),
+            primary: const Color(0xffF4A18A),
         
             onPrimary: Colors.white,
         

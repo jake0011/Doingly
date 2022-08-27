@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_string_escapes
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -6,9 +8,8 @@ import '../../../component/already_have_an_account.dart';
 import '../../../component/rounded_button.dart';
 import '../../../component/rounded_input_field.dart';
 import '../../../component/rounded_password_field.dart';
+import '../../SignUp/signup_screen.dart';
 import '../../Welcome/components/background.dart';
-
-
 
 class LoginBody extends StatelessWidget {
   const LoginBody({
