@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:todo_app/Screens/homepage/profilepage/page/profile_page.dart';
+import 'package:todo_app/global.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: Colors.blue.shade300,
+        primaryColor: listColor,
         dividerColor: Colors.black,
       ),
       darkTheme: ThemeData.dark(),

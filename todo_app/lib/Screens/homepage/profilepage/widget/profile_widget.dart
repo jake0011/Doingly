@@ -30,7 +30,7 @@ class ProfileWidget extends StatelessWidget {
   }
 
   Widget buildImage() {
-    final image = NetworkImage(imagePath);
+    final image = AssetImage(imagePath);
     // FadeInImage.assetNetwork(
     //   placeholder: imagePath,
     //   image:
