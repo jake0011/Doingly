@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:todo_app/Screens/homepage/profilepage/page/profile_page.dart';
 import 'DoinglyPage/doingly_page.dart';
 
 import 'global.dart';
@@ -16,7 +17,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final List<int> _items = List<int>.generate(10, (int index) => index);
-
+  final String title = 'User Profile';
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -64,7 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     child: const Text(
                                       "Add a Task",
                                       textAlign: TextAlign.start,
-                                      style: TextStyle(fontSize: 20),
+                                      style: TextStyle(fontSize: 30),
                                     ));
                               },
                               itemCount: _items.length,
@@ -94,10 +95,15 @@ class _MyHomePageState extends State<MyHomePage> {
                   onPressed: () {
                     Navigator.push(context, MaterialPageRoute<void>(
                         builder: (BuildContext context) {
-                      return Scaffold(
-                          appBar: AppBar(
-                        title: const Text('Next page'),
-                      ));
+                      return MaterialApp(
+                        debugShowCheckedModeBanner: false,
+                        theme: ThemeData(
+                          primaryColor: listColor,
+                          dividerColor: Colors.black,
+                        ),
+                        title: title,
+                        home: ProfilePage(),
+                      );
                     }));
                   }),
             ],

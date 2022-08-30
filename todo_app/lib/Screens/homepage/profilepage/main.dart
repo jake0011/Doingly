@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:todo_app/Screens/Welcome/welcome_screen.dart';
-import 'package:todo_app/constants.dart';
+import 'package:todo_app/Screens/homepage/profilepage/page/profile_page.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -10,23 +9,23 @@ Future main() async {
     DeviceOrientation.portraitDown,
   ]);
 
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  static final String title = 'User Profile';
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Auth',
       theme: ThemeData(
-        primaryColor: kPrimaryColor,
-        scaffoldBackgroundColor: Colors.white,
+        primaryColor: Colors.blue.shade300,
+        dividerColor: Colors.black,
       ),
-      home: WelcomeScreen(),
+      darkTheme: ThemeData.dark(),
+      title: title,
+      home: ProfilePage(),
     );
   }
 }
