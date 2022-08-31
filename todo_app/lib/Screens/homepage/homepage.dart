@@ -41,31 +41,30 @@ class _MyHomePageState extends State<MyHomePage> {
                   onPressed: () {
                     showModalBottomSheet<void>(
                         context: context,
-                        backgroundColor: Color.fromARGB(255, 255, 255, 255),
+                        backgroundColor: Colors.transparent,
                         builder: (BuildContext context) {
                           return SizedBox(
                             height: 450,
                             child: ReorderableListView.builder(
                               itemBuilder: (BuildContext context, int index) {
                                 return Container(
-                                    margin: const EdgeInsets.only(
-                                      bottom: 15,
-                                      left: 15,
-                                      right: 15,
-                                    ),
+                                    margin: const EdgeInsets.all(10
+                                        //   bottom: 15,
+                                        //   left: 15,
+                                        //   right: 15,
+                                        ),
                                     padding: const EdgeInsets.all(10),
                                     key: Key('$index'),
                                     width: MediaQuery.of(context).size.width,
                                     height: 100,
                                     decoration: BoxDecoration(
-                                        color:
-                                            Color.fromARGB(255, 178, 192, 48),
+                                        color: Colors.brown.shade50,
                                         borderRadius: BorderRadius.circular(10),
                                         border: Border.all(color: listColor)),
                                     child: const Text(
                                       "Add a Task",
                                       textAlign: TextAlign.start,
-                                      style: TextStyle(fontSize: 30),
+                                      style: TextStyle(fontSize: 20),
                                     ));
                               },
                               itemCount: _items.length,
