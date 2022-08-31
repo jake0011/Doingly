@@ -3,7 +3,7 @@
    <application
         android:label="Doingly"
         android:name="${applicationName}"
-        android:icon="@mipmap/true">
+        android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
             android:exported="true"
