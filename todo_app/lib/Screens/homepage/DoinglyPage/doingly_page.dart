@@ -42,39 +42,13 @@ class _MyDoinglyPageState extends State<MyDoinglyPage> {
           ),
           Expanded(
             child: Container(
-                color: Colors.brown,
-                child: Theme(
+              color: Colors.brown,
+              child: Theme(
                   data: ThemeData(
                     canvasColor: Colors.transparent,
                   ),
-                  child: ReorderableListView.builder(
-                    itemBuilder: (BuildContext context, int index) {
-                      return Container(
-                          margin: const EdgeInsets.only(
-                              bottom: 15, left: 15, right: 15),
-                          padding: const EdgeInsets.all(10),
-                          key: Key('$index'),
-                          width: MediaQuery.of(context).size.width,
-                          height: 100,
-                          decoration: BoxDecoration(
-                              color: listColor,
-                              borderRadius: BorderRadius.circular(10),
-                              border: Border.all(color: listColor)),
-                          child: const Text("Add a Task"));
-                    },
-                    itemCount: _items.length,
-                    onReorder: (int oldIndex, int newIndex) {
-                      setState(() {
-                        if (oldIndex < newIndex) {
-                          newIndex -= 1;
-                        }
-                        final int item = _items.removeAt(oldIndex);
-                        _items.insert(newIndex, item);
-                      });
-                    },
-                    buildDefaultDragHandles: true,
-                  ),
-                )),
+                  child: tasks(context)),
+            ),
           ),
         ]),
         Positioned(
@@ -93,6 +67,38 @@ class _MyDoinglyPageState extends State<MyDoinglyPage> {
       ],
     );
   }
+
+
+
+  ReorderableListView tasks(BuildContext context) {
+    return ReorderableListView.builder(
+      itemBuilder: (BuildContext context, int index) {
+        return Container(
+            margin: const EdgeInsets.only(bottom: 15, left: 15, right: 15),
+            padding: const EdgeInsets.all(5),
+            key: Key('$index'),
+            width: MediaQuery.of(context).size.width,
+            height: 100,
+            decoration: BoxDecoration(
+                color: listColor,
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(color: listColor)),
+            child: const Text("Add a Task"));
+      },
+      itemCount: _items.length,
+      onReorder: (int oldIndex, int newIndex) {
+        setState(() {
+          if (oldIndex < newIndex) {
+            newIndex -= 1;
+          }
+          final int item = _items.removeAt(oldIndex);
+          _items.insert(newIndex, item);
+        });
+      },
+      buildDefaultDragHandles: true,
+    );
+  }
+
 //   @override
 //   Widget build(BuildContext context) {
 //     return Container(
