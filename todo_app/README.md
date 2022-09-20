@@ -18,6 +18,6 @@ samples, guidance on mobile development, and a full API reference.
 ### ✌ Preview
 
 
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp; App Preview                               
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp; App Preview
 ![](https://github.com/Leetcoders-Todo-App/Front-End/blob/Staging/todo_app/assets/images/Doingly%20UI.jpg)
 
