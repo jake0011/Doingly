@@ -25,7 +25,6 @@ class MyApp extends StatelessWidget {
       create: (context) => AppStateManager(),
       child: Builder(builder: (context) {
         return Consumer<AppStateManager>(builder: (context, appstateManger, _) {
-          print(appstateManger.isDarMode);
           return MaterialApp(
             debugShowCheckedModeBanner: false,
             title: 'Flutter Auth',
