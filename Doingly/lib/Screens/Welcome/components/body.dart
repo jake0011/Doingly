@@ -1,3 +1,4 @@
+import 'package:Doingly/Screens/Welcome/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:Doingly/Screens/Login/login_screen.dart';
@@ -48,7 +49,7 @@ class Body extends StatelessWidget {
               onPressed: () {
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => const LoginScreen()),
+                  MaterialPageRoute(builder: (context) => SplashScreen()),
                 );
                 ;
               },

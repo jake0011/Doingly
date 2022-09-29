@@ -21,8 +21,7 @@ class EventEditingPage extends StatefulWidget {
 class _EventEditingPageState extends State<EventEditingPage> {
   final _formkey = GlobalKey<FormState>();
   final titleController = TextEditingController();
-  final noteController = TextEditingController();
-  final lecturerController = TextEditingController();
+  // final noteController = TextEditingController();
 
   late DateTime fromDate;
   late DateTime toDate;
@@ -74,7 +73,6 @@ class _EventEditingPageState extends State<EventEditingPage> {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 buildTitle(),
-                buildLec(),
                 buildNote(),
                 SizedBox(
                   height: 12,
@@ -90,21 +88,24 @@ class _EventEditingPageState extends State<EventEditingPage> {
 
   List<Widget> buildEditingActions() => [
         ElevatedButton.icon(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Color(0xffF4A18A),
-              shadowColor: Color(0xffF4A18A),
-            ),
-            onPressed: saveForm,
-            icon: const Icon(Icons.done),
-            label: const Text("SAVE"),),
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Color(0xffF4A18A),
+            shadowColor: Color(0xffF4A18A),
+          ),
+          onPressed: saveForm,
+          icon: const Icon(Icons.done),
+          label: const Text("SAVE"),
+        ),
       ];
 
   Widget buildTitle() => Padding(
-        padding: const EdgeInsets.all(10),
+        padding: const EdgeInsets.all(20),
         child: TextFormField(
           style: const TextStyle(fontSize: 15),
           decoration: const InputDecoration(
-              border: UnderlineInputBorder(), hintText: 'Subject/Class Name',),
+            border: UnderlineInputBorder(),
+            hintText: 'Subject/Class Name',
+          ),
           onFieldSubmitted: (_) => saveForm(),
           validator: (title) => title != null && title.isEmpty
               ? "Subject/Class Name cannot be empty"
@@ -121,7 +122,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
       );
 
   Widget buildFrom() => Padding(
-        padding: const EdgeInsets.all(10.0),
+        padding: const EdgeInsets.all(15.0),
         child: buildHeader(
           header: 'Start',
           child: Row(
@@ -134,17 +135,18 @@ class _EventEditingPageState extends State<EventEditingPage> {
                 ),
               ),
               Expanded(
-                  child: buildDropdownField(
-                text: Utils.toTime(fromDate),
-                onClicked: () => pickFromDateTime(pickDate: false),
-              ),),
+                child: buildDropdownField(
+                  text: Utils.toTime(fromDate),
+                  onClicked: () => pickFromDateTime(pickDate: false),
+                ),
+              ),
             ],
           ),
         ),
       );
 
   Widget buildTo() => Padding(
-        padding: const EdgeInsets.all(10.0),
+        padding: const EdgeInsets.all(15.0),
         child: buildHeader(
           header: 'End',
           child: Row(
@@ -157,28 +159,29 @@ class _EventEditingPageState extends State<EventEditingPage> {
                 ),
               ),
               Expanded(
-                  child: buildDropdownField(
-                text: Utils.toTime(toDate),
-                onClicked: () => pickToDateTime(pickDate: false),
-              ),),
+                child: buildDropdownField(
+                  text: Utils.toTime(toDate),
+                  onClicked: () => pickToDateTime(pickDate: false),
+                ),
+              ),
             ],
           ),
         ),
       );
 
-  Widget buildLec() => Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: TextFormField(
-          style: const TextStyle(fontSize: 15),
-          decoration: const InputDecoration(
-              border: UnderlineInputBorder(), hintText: 'Lecturer',),
-          onFieldSubmitted: (_) => saveForm(),
-          validator: (title) => title != null && title.isEmpty
-              ? "Lecturer's Name cannot be empty"
-              : null,
-          controller: lecturerController,
-        ),
-      );
+  // Widget buildLec() => Padding(
+  //       padding: const EdgeInsets.all(8.0),
+  //       child: TextFormField(
+  //         style: const TextStyle(fontSize: 15),
+  //         decoration: const InputDecoration(
+  //             border: UnderlineInputBorder(), hintText: 'Lecturer',),
+  //         onFieldSubmitted: (_) => saveForm(),
+  //         validator: (title) => title != null && title.isEmpty
+  //             ? "Lecturer's Name cannot be empty"
+  //             : null,
+  //         controller: lecturerController,
+  //       ),
+  //     );
 
   Future pickFromDateTime({required bool pickDate}) async {
     final date = await pickDateTime(fromDate, pickDate: pickDate);
@@ -215,10 +218,11 @@ class _EventEditingPageState extends State<EventEditingPage> {
   }) async {
     if (pickDate) {
       final date = await showDatePicker(
-          context: context,
-          initialDate: initialDate,
-          firstDate: firstDate ?? DateTime(2005, 8),
-          lastDate: DateTime(2201),);
+        context: context,
+        initialDate: initialDate,
+        firstDate: firstDate ?? DateTime(2005, 8),
+        lastDate: DateTime(2201),
+      );
 
       if (date == null) return null;
 
@@ -242,8 +246,10 @@ class _EventEditingPageState extends State<EventEditingPage> {
     }
   }
 
-  Widget buildDropdownField(
-          {required String text, required VoidCallback onClicked,}) =>
+  Widget buildDropdownField({
+    required String text,
+    required VoidCallback onClicked,
+  }) =>
       ListTile(
         title: Text(text),
         trailing: const Icon(Icons.arrow_drop_down),
@@ -266,11 +272,12 @@ class _EventEditingPageState extends State<EventEditingPage> {
 
     if (isValid) {
       final event = Event(
-          title: titleController.text,
-          from: fromDate,
-          descriptiom: 'Description',
-          isAllDay: false,
-          to: toDate,);
+        title: titleController.text,
+        from: fromDate,
+        descriptiom: 'Description',
+        isAllDay: false,
+        to: toDate,
+      );
 
       final isEditing = widget.event != null;
       final provider = Provider.of<EventProvider>(context, listen: false);
@@ -302,7 +309,7 @@ class _EventEditingPageState extends State<EventEditingPage> {
                   decoration:
                       const InputDecoration.collapsed(hintText: "Notes"),
                   onSubmitted: (_) => saveForm(),
-                  controller: noteController,
+                  // controller: noteController,
                 ),
               ),
             ),

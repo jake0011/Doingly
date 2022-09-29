@@ -24,11 +24,11 @@ class Body extends StatelessWidget {
   Future getUserData() async {
     try {
       // = await Dio().get('https://jsonplaceholder.typicode.com/posts/1', data:{'username': 'kofi','password': "ama"});
-      var response = await Dio().get(
+      var response = await Dio().post(
         'https://doingly.herokuapp.com/signup',
-        // data:{'username': 'karam','password': "ama"}
+        // data: {'username': 'malafaka', 'password': "lol"}
       );
-      print(response.data);
+      print(response.data.toString());
     } catch (e) {
       print(e);
     }
@@ -37,8 +37,7 @@ class Body extends StatelessWidget {
   Widget build(BuildContext context) {
     late String username;
     late String password;
-    late String firstName;
-    late String lastName;
+    late String Fullname;
     Size size = MediaQuery.of(context).size;
     // ignore: newline-before-return
     return Background(
@@ -82,17 +81,15 @@ class Body extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 0.5),
             child: RoundedButton(
               text: "SIGN UP",
-              onPressed:
-                  // (){
-                  //   getUserData();
-                  // }
-                  () {
+              onPressed: () {
+                getUserData();
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const MyHomePage(
-                            title: '',
-                          ),),
+                    builder: (context) => const MyHomePage(
+                      title: '',
+                    ),
+                  ),
                 );
               },
             ),
@@ -103,7 +100,10 @@ class Body extends StatelessWidget {
             onPressed: () {
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => const LoginScreen()),
+                MaterialPageRoute(
+                    builder: (context) => const LoginScreen(
+                          title: '',
+                        )),
               );
             },
           ),

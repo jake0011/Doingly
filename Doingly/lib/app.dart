@@ -1,7 +1,6 @@
 // ignore_for_file: unused_import, duplicate_import
-
 import 'dart:developer';
-
+import 'package:Doingly/Screens/Welcome/splash.dart';
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +11,7 @@ import 'package:Doingly/constants.dart';
 import 'package:Doingly/providers/appstateManger.dart';
 import 'package:provider/provider.dart' as provider;
 
+import 'Widgets/calendar_Widget/event_provider.dart';
 
 class MyApp extends ConsumerStatefulWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -21,7 +21,6 @@ class MyApp extends ConsumerStatefulWidget {
 }
 
 class _MyAppState extends ConsumerState<MyApp> {
-  
   @override
   Widget build(BuildContext context) {
     ColorScheme light = const ColorScheme.light(
@@ -33,34 +32,36 @@ class _MyAppState extends ConsumerState<MyApp> {
       tertiary: Colors.greenAccent,
     );
 
-    return DynamicColorBuilder(
-      builder: (ColorScheme? lightDynamic, ColorScheme? darkDynamic) {
-        final ColorScheme lightColorScheme = lightDynamic?.copyWith(
-              surface: lightDynamic.onInverseSurface,
-            ) ??
-            light;
-        final ColorScheme darkColorScheme = darkDynamic?.copyWith() ?? dark;
+    return provider.ChangeNotifierProvider<EventProvider>(
+        create: (_) => new EventProvider(),
+        builder: (context, _) {
+          return DynamicColorBuilder(
+            builder: (ColorScheme? lightDynamic, ColorScheme? darkDynamic) {
+              final ColorScheme lightColorScheme = lightDynamic?.copyWith(
+                    surface: lightDynamic.onInverseSurface,
+                  ) ??
+                  light;
+              final ColorScheme darkColorScheme =
+                  darkDynamic?.copyWith() ?? dark;
 
-        return Consumer(
-          builder: (BuildContext context, WidgetRef ref, Widget? child) {
-            
-
-            return provider.ChangeNotifierProvider(
-              create: (context) => AppStateManager(),
-              builder: (context, _) {
-                return MaterialApp(
-                  theme: _configureThemeData(lightColorScheme),
-                  darkTheme: _configureThemeData(darkColorScheme),
-        
-                  debugShowCheckedModeBanner: false,
-                  home: WelcomeScreen(),
-                );
-              },
-            );
-          },
-        );
-      },
-    );
+              return Consumer(
+                builder: (BuildContext context, WidgetRef ref, Widget? child) {
+                  return provider.ChangeNotifierProvider(
+                    create: (context) => AppStateManager(),
+                    builder: (context, _) {
+                      return MaterialApp(
+                        theme: _configureThemeData(lightColorScheme),
+                        darkTheme: _configureThemeData(darkColorScheme),
+                        debugShowCheckedModeBanner: false,
+                        home: WelcomeScreen(),
+                      );
+                    },
+                  );
+                },
+              );
+            },
+          );
+        });
   }
 
   ThemeData _configureThemeData(ColorScheme colorScheme) {

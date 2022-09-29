@@ -1,5 +1,6 @@
 // ignore_for_file: unused_local_variable
 
+import 'package:Doingly/Screens/Welcome/splash.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -20,7 +21,7 @@ void main() async {
   // );
 
   runApp(
-    const MyApp(),
+    MyApp(),
   );
 }
 

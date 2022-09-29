@@ -9,6 +9,7 @@ import '../../../component/rounded_button.dart';
 import '../../../component/rounded_input_field.dart';
 import '../../../component/rounded_password_field.dart';
 import '../../Welcome/components/background.dart';
+import '../../homepage/homepage.dart';
 
 class LoginBody extends StatelessWidget {
   const LoginBody({
@@ -23,8 +24,10 @@ class LoginBody extends StatelessWidget {
       try {
         // = await Dio().get('https://jsonplaceholder.typicode.com/posts/1', data:{'username': 'kofi','password': "ama"});
 
-        var response = await Dio().post('https://doingly.herokuapp.com/login',
-            data: {'username': "seniorman", 'password': "stepper"},);
+        var response = await Dio().post(
+          'https://doingly.herokuapp.com/login',
+          data: {'username': "malafaka", 'password': "lol"},
+        );
         print(response.data);
       } catch (e) {
         print(e);
@@ -81,8 +84,13 @@ class LoginBody extends StatelessWidget {
             onPressed: () {
               print("log");
               getUserData();
-//                        Navigator.pushReplacement(
-// context,MaterialPageRoute(builder: (context) => const MyHomePage(title: '',)),);
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const MyHomePage(
+                          title: '',
+                        )),
+              );
             },
           ),
           SizedBox(
@@ -92,6 +100,7 @@ class LoginBody extends StatelessWidget {
             padding: const EdgeInsets.all(10.0),
             child: AlreadyHaveAnAccountCheck(
               onPressed: () {
+                getUserData();
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(builder: (context) => SignUpScreen()),

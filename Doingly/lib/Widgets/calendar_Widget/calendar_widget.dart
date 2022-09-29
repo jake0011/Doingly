@@ -13,9 +13,7 @@ class CalendarWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     // final events =Prov;
 
-    return ChangeNotifierProvider(
-      create: (_) => new EventProvider(),
-      child: Consumer<EventProvider>(
+    return  Consumer<EventProvider>(
         builder: (context, prov, _) {
           return SfCalendar(
             view: CalendarView.month,
@@ -23,9 +21,7 @@ class CalendarWidget extends StatelessWidget {
             initialSelectedDate: DateTime.now(),
             cellBorderColor: Colors.transparent,
             onLongPress: (details) {
-              final provider =
-                  Provider.of<EventProvider>(context, listen: false);
-              provider.setDate(details.date!);
+              prov.setDate(details.date!);
 
               showBottomSheet(
                 context: context,
@@ -34,7 +30,7 @@ class CalendarWidget extends StatelessWidget {
             },
           );
         },
-      ),
+      
     );
   }
 }

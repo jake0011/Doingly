@@ -8,7 +8,7 @@ TextStyle DoinglyTitleStyle = TextStyle(
   fontFamily: 'Poppins',
   fontWeight: FontWeight.bold,
   color: listColor,
-  fontSize: 35,
+  fontSize: 55,
 );
 
 TextStyle DoinglyTodoTitle = TextStyle(

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:Doingly/Screens/Login/components/loginbody.dart';
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+  const LoginScreen({Key? key, required String title}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

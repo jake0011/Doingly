@@ -17,42 +17,45 @@ class TaskWidget extends StatefulWidget {
 class _TaskWidgetState extends State<TaskWidget> {
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<EventProvider>(context);
-    final selectedEvents = provider.eventsOfSelectedDate;
+    // final provider = Provider.of<EventProvider>(context);
 
-    if (selectedEvents.isEmpty) {
-      return const Center(
-        child: Text(
-          'No Events found',
-          style: TextStyle(fontSize: 15, color: Colors.black),
+    return Consumer<EventProvider>(builder: (context, provider, _) {
+      final selectedEvents = provider.eventsOfSelectedDate;
+
+      if (selectedEvents.isEmpty) {
+        return const Center(
+          child: Text(
+            'No Events found',
+            style: TextStyle(fontSize: 15, color: Colors.black),
+          ),
+        );
+      }
+      return SfCalendarTheme(
+        data: SfCalendarThemeData(
+          timeTextStyle: const TextStyle(fontSize: 14, color: Colors.black),
+        ),
+        child: SfCalendar(
+          view: CalendarView.timelineDay,
+          dataSource: EventDataSource(provider.events),
+          initialDisplayDate: provider.selectedDate,
+          appointmentBuilder: appointmentBuilder,
+          headerHeight: 5,
+          todayHighlightColor: Colors.black,
+          onTap: (details) {
+            if (details.appointments == null) return;
+
+            final event = details.appointments!.first;
+
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => EventViewPage(event: event),
+              ),
+            );
+          },
         ),
       );
-    }
-
-    return SfCalendarTheme(
-      data: SfCalendarThemeData(
-        timeTextStyle: const TextStyle(fontSize: 14, color: Colors.black),
-      ),
-      child: SfCalendar(
-        view: CalendarView.timelineDay,
-        dataSource: EventDataSource(provider.events),
-        initialDisplayDate: provider.selectedDate,
-        appointmentBuilder: appointmentBuilder,
-        headerHeight: 5,
-        todayHighlightColor: Colors.black,
-        onTap: (details) {
-          if (details.appointments == null) return;
-
-          final event = details.appointments!.first;
-
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => EventViewPage(event: event),),
-          );
-        },
-      ),
-    );
+    });
   }
 
   Widget appointmentBuilder(

@@ -35,16 +35,22 @@ class _MyDoinglyPageState extends State<MyDoinglyPage> {
     return Stack(
       children: [
         Container(
-          padding: EdgeInsets.symmetric(
-            horizontal: 15,
-            vertical: 10,
-          ),
+          // padding: EdgeInsets.symmetric(
+          //   horizontal: 15,
+          //   vertical: 10,
+          // ),
           child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Container(
-                  height: 30,
+                  color: tdBGColor,
+                  height: 100,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 15,
+                    vertical: 10,
+                  ),
+                  width: double.infinity,
                   child: Text(
                     'All ToDos',
                     style: DoinglyTitleStyle,
@@ -61,6 +67,10 @@ class _MyDoinglyPageState extends State<MyDoinglyPage> {
                       canvasColor: tdBGColor,
                     ),
                     child: ListView(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 15,
+                        vertical: 10,
+                      ),
                       children: [
                         for (ToDo todoo in _foundToDo.reversed)
                           ToDoItem(
@@ -80,7 +90,7 @@ class _MyDoinglyPageState extends State<MyDoinglyPage> {
                         margin: EdgeInsets.only(
                           bottom: 20,
                           right: 20,
-                          left: 5,
+                          left: 20,
                         ),
                         padding: EdgeInsets.symmetric(
                           horizontal: 20,
@@ -101,7 +111,7 @@ class _MyDoinglyPageState extends State<MyDoinglyPage> {
                     Container(
                       margin: EdgeInsets.only(
                         bottom: 18,
-                        right: 0,
+                        right: 10,
                       ),
                       child: ElevatedButton(
                         child: Text(

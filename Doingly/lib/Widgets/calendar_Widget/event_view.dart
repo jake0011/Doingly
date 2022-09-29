@@ -12,6 +12,8 @@ class EventViewPage extends StatelessWidget {
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
           leading: const CloseButton(),
+          title: Text('DETAILS'),
+          backgroundColor: Color(0xffF4A18A),
           actions: [
             IconButton(
               icon: Icon(Icons.edit),
@@ -37,30 +39,30 @@ class EventViewPage extends StatelessWidget {
           //  buildViewingActions(context, event),
         ),
         body: ListView(
-          padding: EdgeInsets.all(32),
+          padding: EdgeInsets.all(30),
           children: <Widget>[
             buildDateTime(event),
-            const SizedBox(height: 32),
+            const SizedBox(height: 2),
             Padding(
-              padding: const EdgeInsets.all(12.0),
+              padding: const EdgeInsets.all(3.0),
               child: Text(
                 ("Personal Details"),
                 style:
-                    const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                    const TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
               ),
             ),
-            const SizedBox(height: 32),
+            const SizedBox(height: 10),
             Padding(
-              padding: const EdgeInsets.all(3.0),
+              padding: const EdgeInsets.all(0.0),
               child: Text(
                 ("From:"),
                 style:
                     const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
             ),
-            const SizedBox(height: 32),
+            const SizedBox(height: 10),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(3.0),
               child: Text(
                 event.from.toString(),
                 style:
@@ -68,31 +70,32 @@ class EventViewPage extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(3.0),
+              padding: const EdgeInsets.all(0.0),
               child: Text(
                 ("To:"),
                 style:
                     const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
             ),
-            const SizedBox(height: 32),
+            const SizedBox(height: 10),
             Padding(
-              padding: const EdgeInsets.all(12.0),
+              padding: const EdgeInsets.all(0.0),
               child: Text(
                 event.to.toString(),
                 style:
                     const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
             ),
-            const SizedBox(height: 32),
+            const SizedBox(height: 20),
             Text(
-              "Program/Class Name",
+              "Program/Class Name:",
               style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
-            const SizedBox(height: 32),
+            const SizedBox(height: 20),
             Text(
               event.title,
-              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              style:
+                  const TextStyle(fontSize: 15, fontWeight: FontWeight.normal),
             ),
             const SizedBox(
               height: 24,
