@@ -2,13 +2,13 @@
 
 import 'package:flutter/material.dart';
 
-Color OrangeColor = Color.fromARGB(255, 185, 71, 71);
+Color OrangeColor = Color.fromARGB(255, 231, 155, 155);
 
 TextStyle DoinglyTitleStyle = TextStyle(
   fontFamily: 'Poppins',
   fontWeight: FontWeight.bold,
-  color: OrangeColor,
-  fontSize: 25,
+  color: listColor,
+  fontSize: 35,
 );
 
 TextStyle DoinglyTodoTitle = TextStyle(

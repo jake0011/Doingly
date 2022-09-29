@@ -4,10 +4,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:taskline/Screens/homepage/profilepage/page/profile_page.dart';
-import 'package:taskline/todoapp/constants/colors.dart';
-import 'package:taskline/todoapp/model/todo.dart';
+import 'package:taskline/constants.dart';
+import 'package:taskline/Screens/homepage/DoinglyPage/todo.dart';
 import '../../Widgets/calendar_Widget/main.dart';
 import 'DoinglyPage/doingly_page.dart';
+import 'package:taskline/Widgets/todo_item.dart';
 
 import 'global.dart';
 
@@ -33,6 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Scaffold(
             body: Column(children: [
               Expanded(
+                flex: 10,
                 child: MyDoinglyPage(),
               ),
             ]),
@@ -143,8 +145,8 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                const Text(
-                  "Add a Task",
+                Text(
+                  "previous task",
                   textAlign: TextAlign.start,
                   style: TextStyle(fontSize: 15),
                 ),

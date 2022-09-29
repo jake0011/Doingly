@@ -1,10 +1,11 @@
 // ignore_for_file: dead_code
 
 import 'package:flutter/material.dart';
+import 'package:taskline/constants.dart';
 // show Border, BorderRadius, BoxDecoration, BuildContext, Center, CircleAvatar, Colors, Column, Container, EdgeInsets, Expanded, Icon, Icons, Key, MediaQuery, Positioned, Radius, ReorderableListView, Stack, State, StatefulWidget, Text, Theme, ThemeData, Widget;
 import 'package:taskline/models/global.dart';
-import 'package:taskline/todoapp/model/todo.dart';
-import 'package:taskline/todoapp/widgets/todo_item.dart';
+import 'package:taskline/Screens/homepage/DoinglyPage/todo.dart';
+import 'package:taskline/Widgets/todo_item.dart';
 
 class MyDoinglyPage extends StatefulWidget {
   const MyDoinglyPage({
@@ -43,6 +44,7 @@ class _MyDoinglyPageState extends State<MyDoinglyPage> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Container(
+                  height: 30,
                   child: Text(
                     'All ToDos',
                     style: DoinglyTitleStyle,
@@ -51,11 +53,12 @@ class _MyDoinglyPageState extends State<MyDoinglyPage> {
                 ),
                 SizedBox(
                   width: 20,
+                  height: 55,
                 ),
                 Expanded(
                   child: Theme(
                     data: ThemeData(
-                      canvasColor: Colors.transparent,
+                      canvasColor: tdBGColor,
                     ),
                     child: ListView(
                       children: [

@@ -4,7 +4,6 @@ import 'dart:developer';
 
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
-// import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -22,6 +21,7 @@ class MyApp extends ConsumerStatefulWidget {
 }
 
 class _MyAppState extends ConsumerState<MyApp> {
+  
   @override
   Widget build(BuildContext context) {
     ColorScheme light = const ColorScheme.light(
@@ -65,13 +65,9 @@ class _MyAppState extends ConsumerState<MyApp> {
 
   ThemeData _configureThemeData(ColorScheme colorScheme) {
     return ThemeData(
-      // colorScheme: colorScheme,
-      // useMaterial3: true,
       scaffoldBackgroundColor: kPrimaryLightColor,
       bottomAppBarColor: colorScheme.surfaceVariant,
-      appBarTheme: AppBarTheme(
-          // backgroundColor: colorScheme.surface,
-          ),
+      appBarTheme: AppBarTheme(),
     );
   }
 }

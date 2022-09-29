@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:taskline/global.dart';
+import 'package:taskline/models/global.dart';
 
 class ButtonWidget extends StatelessWidget {
   final String text;
@@ -14,7 +14,9 @@ class ButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) => ElevatedButton(
         style: ElevatedButton.styleFrom(
-          foregroundColor: Colors.white, backgroundColor: listColor, shape: const StadiumBorder(),
+          foregroundColor: Colors.white,
+          backgroundColor: listColor,
+          shape: const StadiumBorder(),
           padding: EdgeInsets.symmetric(horizontal: 32, vertical: 12),
         ),
         child: Text(text),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:taskline/Screens/homepage/profilepage/page/profile_page.dart';
-import 'package:taskline/global.dart';
+import 'package:taskline/models/global.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
