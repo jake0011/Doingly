@@ -8,12 +8,13 @@ import 'package:Doingly/constants.dart';
 import 'package:Doingly/Screens/homepage/DoinglyPage/todo.dart';
 import '../../Widgets/calendar_Widget/main.dart';
 import 'DoinglyPage/doingly_page.dart';
-import 'package:Doingly/Widgets/todo_item.dart';
 
 import 'global.dart';
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
+  final Map data;
+  const MyHomePage({Key? key, required this.title, required this.data})
+      : super(key: key);
 
   final String title;
 
@@ -31,6 +32,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return MaterialApp(
         color: Colors.white,
         home: SafeArea(
+          maintainBottomViewPadding: false,
           child: Scaffold(
             body: Column(children: [
               Expanded(
@@ -45,7 +47,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 backgroundColor: tdBGColor,
                 elevation: 0.0,
-                title: Text("Home", style: TextStyle(color: Colors.black)),
+                title: Text("Home",
+                    style: TextStyle(color: Colors.black, fontSize: 15)),
                 titleSpacing: -10.0,
                 actions: [
                   Container(
@@ -75,22 +78,6 @@ class _MyHomePageState extends State<MyHomePage> {
                     children: [
                       IconButton(
                         icon: Icon(
-                          Icons.lightbulb_outline_rounded,
-                          color: Colors.black,
-                        ),
-                        tooltip: "Suggestions",
-                        onPressed: () {
-                          showModalBottomSheet<void>(
-                            context: context,
-                            backgroundColor: Colors.transparent,
-                            builder: (BuildContext context) {
-                              return TaskLists();
-                            },
-                          );
-                        },
-                      ),
-                      IconButton(
-                        icon: Icon(
                           Icons.account_circle,
                           color: Colors.black,
                         ),
@@ -102,7 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 debugShowCheckedModeBanner: false,
                                 theme: ThemeData(
                                   primaryColor: listColor,
-                                  dividerColor: Colors.black,
+                                  dividerColor: Colors.blue,
                                 ),
                                 title: title,
                                 home: Profile(),
@@ -121,6 +108,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Profile() => ProfilePage();
 
+// ---------------------`
   SizedBox TaskLists() {
     return SizedBox(
       height: 450,

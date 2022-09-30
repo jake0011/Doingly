@@ -45,10 +45,10 @@ class _MyDoinglyPageState extends State<MyDoinglyPage> {
               children: [
                 Container(
                   color: tdBGColor,
-                  height: 100,
+                  height: 60,
                   padding: EdgeInsets.symmetric(
                     horizontal: 15,
-                    vertical: 10,
+                    vertical: 0,
                   ),
                   width: double.infinity,
                   child: Text(
@@ -111,7 +111,7 @@ class _MyDoinglyPageState extends State<MyDoinglyPage> {
                     Container(
                       margin: EdgeInsets.only(
                         bottom: 18,
-                        right: 10,
+                        right: 20,
                       ),
                       child: ElevatedButton(
                         child: Text(
@@ -124,7 +124,7 @@ class _MyDoinglyPageState extends State<MyDoinglyPage> {
                           _addToDoItem(_todoController.text);
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Color.fromARGB(255, 160, 109, 91),
+                          backgroundColor: listColor,
                           minimumSize: Size(60, 60),
                           elevation: 10,
                         ),

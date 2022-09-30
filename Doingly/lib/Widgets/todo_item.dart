@@ -1,3 +1,4 @@
+import 'package:Doingly/models/global.dart';
 import 'package:flutter/material.dart';
 import 'package:Doingly/constants.dart';
 
@@ -31,7 +32,7 @@ class ToDoItem extends StatelessWidget {
         tileColor: Colors.white,
         leading: Icon(
           todo.isDone ? Icons.check_box : Icons.check_box_outline_blank,
-          color: tdBlue,
+          color: Colors.black,
         ),
         title: Text(
           todo.todoText!,
@@ -47,11 +48,11 @@ class ToDoItem extends StatelessWidget {
           height: 35,
           width: 35,
           decoration: BoxDecoration(
-            color: tdRed,
+            color: listColor,
             borderRadius: BorderRadius.circular(5),
           ),
           child: IconButton(
-            color: Colors.white,
+            color: Colors.black,
             iconSize: 18,
             icon: Icon(Icons.delete),
             onPressed: () {

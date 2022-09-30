@@ -20,15 +20,17 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  void InitState() {
+  @override
+  void initState() {
     super.initState();
-
-    Future.delayed(Duration(seconds: 5)).then((value) {
-    
-    });  // Navigator.push(
-      //   context,
-      //   MaterialPageRoute(builder: (context) => WelcomeScreen()),
-      // );
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      await Future.delayed(Duration(seconds: 4)).then((value) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => WelcomeScreen()),
+        );
+      });
+    });
   }
 
   @override

@@ -11,7 +11,7 @@ AppBar buildAppBar(BuildContext context) {
   return AppBar(
     leading: BackButton(onPressed: () {
       Navigator.push(context,
-          MaterialPageRoute(builder: (context) => MyHomePage(title: 'Home')),);
+          MaterialPageRoute(builder: (context) => MyHomePage(title: 'Home', data: {},)),);
     }),
     backgroundColor: listColor,
     elevation: 0,

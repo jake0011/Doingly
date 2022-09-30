@@ -48,6 +48,7 @@ class MainPage extends StatelessWidget {
                       MaterialPageRoute(
                           builder: (context) => MyHomePage(
                                 title: '',
+                                data: {},
                               )),
                     );
                   },

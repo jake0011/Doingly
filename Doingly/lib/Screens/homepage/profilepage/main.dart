@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:Doingly/Screens/homepage/profilepage/page/profile_page.dart';
-import 'package:Doingly/models/global.dart';
+import 'package:get/get.dart';
+
+
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,20 +15,29 @@ Future main() async {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  static final String title = 'User Profile';
+class MyApp extends StatefulWidget {
+ 
+
+
+    const MyApp({super.key});
+    
+     @override
+  State<MyApp> createState() =>  _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+   static final String title = 'User Profile';
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primaryColor: listColor,
-        dividerColor: Colors.black,
-      ),
       darkTheme: ThemeData.dark(),
+      themeMode: ThemeMode.system,
       title: title,
       home: ProfilePage(),
     );
   }
+  
+ 
 }

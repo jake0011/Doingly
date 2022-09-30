@@ -49,7 +49,7 @@ class Body extends StatelessWidget {
               onPressed: () {
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => SplashScreen()),
+                  MaterialPageRoute(builder: (context) => LoginScreen()),
                 );
                 ;
               },

@@ -39,7 +39,7 @@ class _TaskWidgetState extends State<TaskWidget> {
           dataSource: EventDataSource(provider.events),
           initialDisplayDate: provider.selectedDate,
           appointmentBuilder: appointmentBuilder,
-          headerHeight: 5,
+          headerHeight: 100,
           todayHighlightColor: Colors.black,
           onTap: (details) {
             if (details.appointments == null) return;

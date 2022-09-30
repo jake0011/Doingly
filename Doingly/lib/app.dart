@@ -53,7 +53,7 @@ class _MyAppState extends ConsumerState<MyApp> {
                         theme: _configureThemeData(lightColorScheme),
                         darkTheme: _configureThemeData(darkColorScheme),
                         debugShowCheckedModeBanner: false,
-                        home: WelcomeScreen(),
+                        home: SplashScreen(),
                       );
                     },
                   );

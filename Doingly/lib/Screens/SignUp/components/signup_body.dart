@@ -16,18 +16,24 @@ import '../../Login/components/ordivider_screen.dart';
 
 class Body extends StatelessWidget {
   final Widget child;
-  const Body({
+  Body({
     Key? key,
     required this.child,
   }) : super(key: key);
 
+  final TextEditingController usernameTEC = TextEditingController();
+  final TextEditingController fullnameTEC = TextEditingController();
+  final TextEditingController passwordnameTEC = TextEditingController();
+
   Future getUserData() async {
     try {
       // = await Dio().get('https://jsonplaceholder.typicode.com/posts/1', data:{'username': 'kofi','password': "ama"});
-      var response = await Dio().post(
-        'https://doingly.herokuapp.com/signup',
-        // data: {'username': 'malafaka', 'password': "lol"}
-      );
+      var response =
+          await Dio().post('https://doingly.herokuapp.com/signup', data: {
+        'username': usernameTEC.text,
+        'fullname': fullnameTEC.text,
+        'password': passwordnameTEC.text
+      });
       print(response.data.toString());
     } catch (e) {
       print(e);
@@ -63,34 +69,52 @@ class Body extends StatelessWidget {
           // ),
 
           RoundedInputField(
+            controller: fullnameTEC,
             hintText: "Full Name:",
             // ignore: no-empty-block
             onChanged: (value) {},
           ),
 
           RoundedInputField(
+            controller: usernameTEC,
             hintText: "Username:",
             // ignore: no-empty-block
             onChanged: (value) {},
           ),
 
           // ignore: no-empty-block
-          RoundedPasswordField(onChanged: (value) {}),
+          RoundedPasswordField(
+              passController: passwordnameTEC, onChanged: (value) {}),
 
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 0.5),
             child: RoundedButton(
               text: "SIGN UP",
-              onPressed: () {
-                getUserData();
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const MyHomePage(
-                      title: '',
-                    ),
-                  ),
-                );
+              onPressed: () async {
+                print('login started');
+                try {
+                  var response = await Dio()
+                      .post('https://doingly.herokuapp.com/signup', data: {
+                    'username': usernameTEC.text,
+                    'fullname': fullnameTEC.text,
+                    'password': passwordnameTEC.text
+                  });
+                  print(response.data.toString());
+                  if (response.data['message'] == 'Success') {
+                    var snackBar =
+                        SnackBar(content: Text('Sign up successful'));
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const LoginScreen(
+                        ),
+                      ),
+                    );
+                  }
+                } catch (e) {
+                  print(e);
+                }
               },
             ),
           ),
@@ -102,7 +126,6 @@ class Body extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                     builder: (context) => const LoginScreen(
-                          title: '',
                         )),
               );
             },

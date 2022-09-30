@@ -14,7 +14,6 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     final user = UserPreferences.myUser;
-   
 
     return Scaffold(
       appBar: buildAppBar(context),
@@ -29,10 +28,10 @@ class _ProfilePageState extends State<ProfilePage> {
           ),
           const SizedBox(height: 30),
           buildName(user),
-          const SizedBox(height: 70),
+          const SizedBox(height: 30),
           Center(child: buildAbout(user)),
-          const SizedBox(height: 100),
-          Center(child: buildUpgradeButton()),
+          const SizedBox(height: 60),
+          Center(child: buildSupportButton()),
           const SizedBox(height: 20),
         ],
       ),
@@ -53,27 +52,36 @@ class _ProfilePageState extends State<ProfilePage> {
         ],
       );
 
-  Widget buildUpgradeButton() => ButtonWidget(
+  Widget buildSupportButton() => ButtonWidget(
         text: 'Support Us!',
         // ignore: no-empty-block
         onClicked: () {},
       );
 
   Widget buildAbout(User user) => Container(
-        padding: EdgeInsets.symmetric(horizontal: 48),
+        // padding: EdgeInsets.symmetric(horizontal: 48),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            SizedBox(height: 16),
             Text(
               'About',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 10),
             Text(
               user.about,
               style: TextStyle(fontSize: 16, height: 1.4),
             ),
           ],
+        ),
+        margin: const EdgeInsets.symmetric(vertical: 8),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 2),
+        width: MediaQuery.of(context).size.width * 0.9,
+        height: MediaQuery.of(context).size.height * 0.3,
+        decoration: BoxDecoration(
+          color: const Color(0xffF4A18A),
+          borderRadius: BorderRadius.circular(10),
         ),
       );
 }

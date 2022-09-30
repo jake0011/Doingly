@@ -20,6 +20,9 @@ class LoginBody extends StatelessWidget {
   Widget build(BuildContext context) {
     late String username;
     late String password;
+    final TextEditingController passwordTEC = TextEditingController();
+    final TextEditingController usernameTEC = TextEditingController();
+
     Future getUserData() async {
       try {
         // = await Dio().get('https://jsonplaceholder.typicode.com/posts/1', data:{'username': 'kofi','password': "ama"});
@@ -66,6 +69,7 @@ class LoginBody extends StatelessWidget {
             height: size.height * 0.01,
           ),
           RoundedInputField(
+            controller: usernameTEC,
             hintText: "Username:",
             onChanged: (value) {
               username = value;
@@ -75,22 +79,44 @@ class LoginBody extends StatelessWidget {
             onChanged: (value) {
               password = value;
             },
+            passController: passwordTEC,
           ),
           SizedBox(
             height: size.height * 0.01,
           ),
           RoundedButton(
             text: "LOGIN",
-            onPressed: () {
-              print("log");
-              getUserData();
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const MyHomePage(
-                          title: '',
-                        )),
-              );
+            onPressed: () async {
+              print('login started');
+              try {
+                var response = await Dio()
+                    .post('https://doingly.herokuapp.com/login', data: {
+                  'username': usernameTEC.text,
+                  'password': passwordTEC.text
+                });
+                print(response.data.toString());
+                if (response.data['message'] == 'Success') {
+                  var snackBar = SnackBar(content: Text('Login successful'));
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => MyHomePage(
+                        data: response.data['data'],
+                        title: '',
+                      ),
+                    ),
+                  );
+                } else {
+                  var snackBar = SnackBar(
+                    content: Text(response.data['message']),
+                    backgroundColor: Colors.red,
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                }
+              } catch (e) {
+                print(e);
+              }
             },
           ),
           SizedBox(
@@ -99,14 +125,7 @@ class LoginBody extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(10.0),
             child: AlreadyHaveAnAccountCheck(
-              onPressed: () {
-                getUserData();
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => SignUpScreen()),
-                );
-                ;
-              },
+              onPressed: () async {},
             ),
           ),
         ],
