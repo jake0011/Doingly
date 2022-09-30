@@ -152,30 +152,35 @@ class _MyDoinglyPageState extends State<MyDoinglyPage> {
 
   void _addToDoItem(String toDo) {
     setState(() {
-      todosList.add(ToDo(
-        id: DateTime.now().millisecondsSinceEpoch.toString(),
-        todoText: toDo,
-      ));
+      if (toDo == "") {
+        return;
+      } else {
+        todosList.add(ToDo(
+          id: DateTime.now().millisecondsSinceEpoch.toString(),
+          todoText: toDo,
+        ));
+      }
+      ;
     });
     _todoController.clear();
   }
 
-  void _runFilter(String enteredKeyword) {
-    List<ToDo> results = [];
-    if (enteredKeyword.isEmpty) {
-      results = todosList;
-    } else {
-      results = todosList
-          .where((item) => item.todoText!
-              .toLowerCase()
-              .contains(enteredKeyword.toLowerCase()))
-          .toList();
-    }
+  // void _runFilter(String enteredKeyword) {
+  //   List<ToDo> results = [];
+  //   if (enteredKeyword.isEmpty) {
+  //     results = todosList;
+  //   } else {
+  //     results = todosList
+  //         .where((item) => item.todoText!
+  //             .toLowerCase()
+  //             .contains(enteredKeyword.toLowerCase()))
+  //         .toList();
+  //   }
 
-    setState(() {
-      _foundToDo = results;
-    });
-  }
+  //   setState(() {
+  //     _foundToDo = results;
+  //   });
+  // }
 
 // --------------------------------------------
 

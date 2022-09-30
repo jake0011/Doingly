@@ -3,7 +3,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:Doingly/Screens/SignUp/signup_screen.dart';
 import '../../../component/already_have_an_account.dart';
 import '../../../component/rounded_button.dart';
 import '../../../component/rounded_input_field.dart';
@@ -13,6 +12,7 @@ import '../../homepage/homepage.dart';
 
 class LoginBody extends StatelessWidget {
   const LoginBody({
+    
     Key? key,
   }) : super(key: key);
 
@@ -95,6 +95,8 @@ class LoginBody extends StatelessWidget {
                   'password': passwordTEC.text
                 });
                 print(response.data.toString());
+                  String personName = response.data["personName"].toString();
+                  String personUserName = response.data["personUsername"].toString();
                 if (response.data['message'] == 'Success') {
                   var snackBar = SnackBar(content: Text('Login successful'));
                   ScaffoldMessenger.of(context).showSnackBar(snackBar);
