@@ -1,6 +1,3 @@
-
-
-
 // import 'package:calendarwidget/event.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -8,7 +5,6 @@ import 'event.dart';
 
 class EventProvider extends ChangeNotifier {
   final List<Event> _events = [];
-
 
   List<Event> get events => _events;
   DateTime _selectedDate = DateTime.now();
@@ -31,10 +27,14 @@ class EventProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void editEvent(Event newEvent, Event oldEvent){
+  void editEvent(Event newEvent, Event oldEvent) {
     final index = _events.indexOf(oldEvent);
     _events[index] = newEvent;
 
     notifyListeners();
   }
 }
+
+// setState(() {
+//       todosList.removeWhere((item) => item.id == id);
+//     });

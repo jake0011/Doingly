@@ -12,7 +12,7 @@ class EventViewPage extends StatelessWidget {
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
           leading: const CloseButton(),
-          title: Text('DETAILS'),
+          title: Text('Your Timetable'),
           backgroundColor: Color(0xffF4A18A),
           actions: [
             IconButton(
@@ -29,8 +29,7 @@ class EventViewPage extends StatelessWidget {
               icon: Icon(Icons.delete),
               onPressed: () {
                 final provider =
-                    Provider.of<EventProvider>(context, listen: false);
-
+                    Provider.of<EventProvider>(context, listen: true);
                 provider.deleteEvent(event);
               },
             ),
@@ -46,7 +45,7 @@ class EventViewPage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(3.0),
               child: Text(
-                ("Personal Details"),
+                ("Your Timetable"),
                 style:
                     const TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
               ),
@@ -65,10 +64,11 @@ class EventViewPage extends StatelessWidget {
               padding: const EdgeInsets.all(3.0),
               child: Text(
                 event.from.toString(),
-                style:
-                    const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                style: const TextStyle(
+                    fontSize: 16, fontWeight: FontWeight.normal),
               ),
             ),
+            const SizedBox(height: 20),
             Padding(
               padding: const EdgeInsets.all(0.0),
               child: Text(
@@ -82,28 +82,29 @@ class EventViewPage extends StatelessWidget {
               padding: const EdgeInsets.all(0.0),
               child: Text(
                 event.to.toString(),
-                style:
-                    const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                style: const TextStyle(
+                    fontSize: 16, fontWeight: FontWeight.normal),
               ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 30),
             Text(
               "Program/Class Name:",
               style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 10),
             Text(
               event.title,
               style:
                   const TextStyle(fontSize: 15, fontWeight: FontWeight.normal),
             ),
             const SizedBox(
-              height: 24,
+              height: 34,
             ),
-            Text(
-              event.descriptiom,
-              style: const TextStyle(color: Colors.black, fontSize: 18),
-            ),
+            Text(event.descriptiom,
+                style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold)),
           ],
         ),
       );

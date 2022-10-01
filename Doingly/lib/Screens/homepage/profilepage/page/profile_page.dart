@@ -4,6 +4,7 @@ import 'package:Doingly/Screens/homepage/profilepage/utils/user_preferences.dart
 import 'package:Doingly/Screens/homepage/profilepage/widget/appbar_widget.dart';
 import 'package:Doingly/Screens/homepage/profilepage//widget/button_widget.dart';
 import 'package:Doingly/Screens/homepage/profilepage/widget/profile_widget.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -26,7 +27,7 @@ class _ProfilePageState extends State<ProfilePage> {
             // ignore: no-empty-block
             onClicked: () async {},
           ),
-          const SizedBox(height: 30),
+          const SizedBox(height: 10),
           buildName(user),
           const SizedBox(height: 30),
           Center(child: buildAbout(user)),
@@ -55,7 +56,9 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget buildSupportButton() => ButtonWidget(
         text: 'Support Us!',
         // ignore: no-empty-block
-        onClicked: () {},
+        onClicked: () {
+          _launchUrl();
+        },
       );
 
   Widget buildAbout(User user) => Container(
@@ -84,4 +87,12 @@ class _ProfilePageState extends State<ProfilePage> {
           borderRadius: BorderRadius.circular(10),
         ),
       );
+}
+
+Future<void> _launchUrl() async {
+  final Uri _url = Uri.parse(
+      'https://github.com/Leetcoders-Todo-App/Front-End/tree/Staging');
+  if (!await launchUrl(_url)) {
+    throw 'Could not launch $_url';
+  }
 }

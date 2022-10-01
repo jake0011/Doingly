@@ -19,11 +19,6 @@ class ProfileWidget extends StatelessWidget {
       child: Stack(
         children: [
           buildImage(),
-          Positioned(
-            bottom: 0,
-            right: 4,
-            child: buildEditIcon(color),
-          ),
         ],
       ),
     );
@@ -31,11 +26,7 @@ class ProfileWidget extends StatelessWidget {
 
   Widget buildImage() {
     final image = AssetImage(imagePath);
-    // FadeInImage.assetNetwork(
-    //   placeholder: imagePath,
-    //   image:
-    //       'https://drive.google.com/file/d/11QByFLIjfPpmCVNN6EQQZBbccDw8nGJh/view?usp=sharing',
-    // );
+   
 
     return ClipOval(
       child: Material(

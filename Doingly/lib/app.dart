@@ -10,7 +10,6 @@ import 'package:Doingly/Screens/Welcome/welcome_screen.dart';
 import 'package:Doingly/constants.dart';
 import 'package:Doingly/providers/appstateManger.dart';
 import 'package:provider/provider.dart' as provider;
-
 import 'Widgets/calendar_Widget/event_provider.dart';
 
 class MyApp extends ConsumerStatefulWidget {
@@ -23,52 +22,25 @@ class MyApp extends ConsumerStatefulWidget {
 class _MyAppState extends ConsumerState<MyApp> {
   @override
   Widget build(BuildContext context) {
-    ColorScheme light = const ColorScheme.light(
-      primary: Colors.blue,
-      tertiary: Colors.green,
-    );
-    ColorScheme dark = const ColorScheme.dark(
-      primary: Colors.blueAccent,
-      tertiary: Colors.greenAccent,
-    );
-
     return provider.ChangeNotifierProvider<EventProvider>(
-        create: (_) => new EventProvider(),
-        builder: (context, _) {
-          return DynamicColorBuilder(
-            builder: (ColorScheme? lightDynamic, ColorScheme? darkDynamic) {
-              final ColorScheme lightColorScheme = lightDynamic?.copyWith(
-                    surface: lightDynamic.onInverseSurface,
-                  ) ??
-                  light;
-              final ColorScheme darkColorScheme =
-                  darkDynamic?.copyWith() ?? dark;
-
-              return Consumer(
-                builder: (BuildContext context, WidgetRef ref, Widget? child) {
-                  return provider.ChangeNotifierProvider(
-                    create: (context) => AppStateManager(),
-                    builder: (context, _) {
-                      return MaterialApp(
-                        theme: _configureThemeData(lightColorScheme),
-                        darkTheme: _configureThemeData(darkColorScheme),
-                        debugShowCheckedModeBanner: false,
-                        home: SplashScreen(),
-                      );
-                    },
-                  );
-                },
-              );
-            },
-          );
-        });
-  }
-
-  ThemeData _configureThemeData(ColorScheme colorScheme) {
-    return ThemeData(
-      scaffoldBackgroundColor: kPrimaryLightColor,
-      bottomAppBarColor: colorScheme.surfaceVariant,
-      appBarTheme: AppBarTheme(),
+      create: (_) => new EventProvider(),
+      builder: (context, _) {
+        return Consumer(
+          builder: (BuildContext context, WidgetRef ref, Widget? child) {
+            return provider.ChangeNotifierProvider(
+              create: (context) => AppStateManager(),
+              builder: (context, _) {
+                return MaterialApp(
+                  darkTheme: ThemeData.dark(),
+                  themeMode: ThemeMode.system,
+                  debugShowCheckedModeBanner: false,
+                  home: SplashScreen(),
+                );
+              },
+            );
+          },
+        );
+      },
     );
   }
 }

@@ -2,11 +2,16 @@
 
 // ignore: unused_import
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:Doingly/Screens/homepage/profilepage/page/profile_page.dart';
 import 'package:Doingly/constants.dart';
 import 'package:Doingly/Screens/homepage/DoinglyPage/todo.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import '../../Widgets/calendar_Widget/main.dart';
+import '../../providers/appstateManger.dart';
 import 'DoinglyPage/doingly_page.dart';
 
 import 'global.dart';
@@ -26,83 +31,93 @@ class _MyHomePageState extends State<MyHomePage> {
   final List<int> _items = List<int>.generate(10, (int index) => index);
   final String title = 'User Profile';
   final todolist = ToDo.todoList();
+  final icon = CupertinoIcons.moon_stars;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        darkTheme: ThemeData.dark(),
+        themeMode: ThemeMode.light,
         color: Colors.white,
-        home: SafeArea(
-          maintainBottomViewPadding: false,
-          child: Scaffold(
-            body: Column(children: [
-              Expanded(
-                flex: 10,
-                child: MyDoinglyPage(),
+        home: Scaffold(
+          body: Column(children: [
+            Expanded(
+              flex: 10,
+              child: MyDoinglyPage(),
+            ),
+          ]),
+          appBar: AppBar(
+              leading: Icon(
+                Icons.home,
+                color: Colors.black,
               ),
-            ]),
-            appBar: AppBar(
-                leading: Icon(
-                  Icons.home,
-                  color: Colors.black,
+              backgroundColor: tdBGColor,
+              elevation: 0.0,
+              title: Text("Home",
+                  style: TextStyle(color: Colors.black, fontSize: 15)),
+              titleSpacing: -10.0,
+              actions: [
+                IconButton(
+                  icon: Icon(
+                    Icons.add_task,
+                    color: Colors.black,
+                    size: 25,
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (BuildContext context) {
+                        return const MainPage();
+                      }),
+                    );
+                  },
                 ),
-                backgroundColor: tdBGColor,
-                elevation: 0.0,
-                title: Text("Home",
-                    style: TextStyle(color: Colors.black, fontSize: 15)),
-                titleSpacing: -10.0,
-                actions: [
-                  Container(
-                    child: IconButton(
-                      icon: Icon(
-                        Icons.add_task,
+                SizedBox(
+                  width: 20,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    IconButton(
+                        icon: Icon(
+                          icon,
+                        ),
                         color: Colors.black,
-                        size: 25,
+                        onPressed: () {
+                          Get.isDarkMode
+                              ? Get.changeTheme(ThemeData.light())
+                              : Get.changeTheme(ThemeData.dark());
+                          //   Consumer<AppStateManager>(builder: (context, appStateManager, _) {
+                          //   appStateManager.changeTheme();
+                          // },
+                          // );
+                        }),
+                    IconButton(
+                      icon: Icon(
+                        Icons.account_circle,
+                        color: Colors.black,
                       ),
+                      tooltip: "Profile",
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (BuildContext context) {
-                            return const MainPage();
-                          }),
-                        );
+                        Navigator.push(context, MaterialPageRoute<void>(
+                          builder: (BuildContext context) {
+                            return MaterialApp(
+                              debugShowCheckedModeBanner: false,
+                              theme: ThemeData(
+                                primaryColor: listColor,
+                                dividerColor: Colors.blue,
+                              ),
+                              title: title,
+                              home: Profile(),
+                            );
+                          },
+                        ));
                       },
                     ),
-                    width: 30,
-                    height: 30,
-                  ),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      IconButton(
-                        icon: Icon(
-                          Icons.account_circle,
-                          color: Colors.black,
-                        ),
-                        tooltip: "Profile",
-                        onPressed: () {
-                          Navigator.push(context, MaterialPageRoute<void>(
-                            builder: (BuildContext context) {
-                              return MaterialApp(
-                                debugShowCheckedModeBanner: false,
-                                theme: ThemeData(
-                                  primaryColor: listColor,
-                                  dividerColor: Colors.blue,
-                                ),
-                                title: title,
-                                home: Profile(),
-                              );
-                            },
-                          ));
-                        },
-                      ),
-                    ],
-                  ),
-                ]),
-            backgroundColor: tdBGColor,
-          ),
+                  ],
+                ),
+              ]),
+          backgroundColor: tdBGColor,
         ));
   }
 
