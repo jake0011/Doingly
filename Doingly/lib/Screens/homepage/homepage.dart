@@ -1,7 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
-// ignore: unused_import
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:Doingly/Screens/homepage/profilepage/page/profile_page.dart';
@@ -30,7 +26,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final List<int> _items = List<int>.generate(10, (int index) => index);
   final String title = 'User Profile';
-  final todolist = ToDo.todoList();
+  final todolist = [];
   final icon = CupertinoIcons.moon_stars;
 
   @override
@@ -78,20 +74,20 @@ class _MyHomePageState extends State<MyHomePage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    IconButton(
-                        icon: Icon(
-                          icon,
-                        ),
-                        color: Colors.black,
-                        onPressed: () {
-                          Get.isDarkMode
-                              ? Get.changeTheme(ThemeData.light())
-                              : Get.changeTheme(ThemeData.dark());
-                          //   Consumer<AppStateManager>(builder: (context, appStateManager, _) {
-                          //   appStateManager.changeTheme();
-                          // },
-                          // );
-                        }),
+                    // IconButton(
+                    //     icon: Icon(
+                    //       icon,
+                    //     ),
+                    //     color: Colors.black,
+                    //     onPressed: () {
+                    //       Get.isDarkMode
+                    //           ? Get.changeTheme(ThemeData.light())
+                    //           : Get.changeTheme(ThemeData.dark());
+                    //       //   Consumer<AppStateManager>(builder: (context, appStateManager, _) {
+                    //       //   appStateManager.changeTheme();
+                    //       // },
+                    //       // );
+                    //     }),
                     IconButton(
                       icon: Icon(
                         Icons.account_circle,

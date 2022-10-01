@@ -10,20 +10,26 @@ AppBar buildAppBar(BuildContext context) {
 
   return AppBar(
     leading: BackButton(onPressed: () {
-      Navigator.push(context,
-          MaterialPageRoute(builder: (context) => MyHomePage(title: 'Home', data: {},)),);
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => MyHomePage(
+                  title: 'Home',
+                  data: {},
+                )),
+      );
     }),
     backgroundColor: listColor,
     elevation: 0,
-    actions: [
-      Consumer<AppStateManager>(builder: (context, appStateManager, _) {
-        return IconButton(
-          icon: Icon(icon),
-          onPressed: () {
-            appStateManager.changeTheme();
-          },
-        );
-      }),
-    ],
+    // actions: [
+    //   Consumer<AppStateManager>(builder: (context, appStateManager, _) {
+    //     return IconButton(
+    //       icon: Icon(icon),
+    //       onPressed: () {
+    //         appStateManager.changeTheme();
+    //       },
+    //     );
+    //   }),
+    // ],
   );
 }
