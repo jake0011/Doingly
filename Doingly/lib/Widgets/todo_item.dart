@@ -22,7 +22,7 @@ class ToDoItem extends StatelessWidget {
       margin: EdgeInsets.only(bottom: 15),
       child: ListTile(
         onTap: () {
-          // print('Clicked on Todo Item.');
+          // Call the onToDoChanged function when the todo item is tapped
           onToDoChanged(todo);
         },
         shape: RoundedRectangleBorder(
@@ -31,6 +31,7 @@ class ToDoItem extends StatelessWidget {
         contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
         tileColor: Colors.white,
         leading: Icon(
+          // Show a checked or unchecked box icon based on the isDone property of the todo
           todo.isDone ? Icons.check_box : Icons.check_box_outline_blank,
           color: Colors.black,
         ),
@@ -39,6 +40,7 @@ class ToDoItem extends StatelessWidget {
           style: TextStyle(
             fontSize: 16,
             color: tdBlack,
+            // Apply a line-through decoration to the text if the todo is marked as done
             decoration: todo.isDone ? TextDecoration.lineThrough : null,
           ),
         ),
@@ -56,8 +58,8 @@ class ToDoItem extends StatelessWidget {
             iconSize: 18,
             icon: Icon(Icons.delete),
             onPressed: () {
+              // Call the onDeleteItem function with the todo's id when the delete button is pressed
               onDeleteItem(todo.id);
-              
             },
           ),
         ),

@@ -3,7 +3,6 @@ import 'dart:developer';
 import 'package:Doingly/Screens/Welcome/splash.dart';
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:Doingly/Screens/Welcome/welcome_screen.dart';

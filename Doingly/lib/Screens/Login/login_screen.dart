@@ -6,12 +6,12 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-      // ignore: unused_local_variable
-      Size size = MediaQuery.of(context).size;
-    // ignore: newline-before-return
-    return const Scaffold(
+    // Get the size of the screen
+    Size size = MediaQuery.of(context).size;
+
+    // Return a Scaffold with the LoginBody widget as the body
+    return Scaffold(
       body: LoginBody(),
     );
   }
 }
-

@@ -2,24 +2,32 @@
 
 import 'package:flutter/material.dart';
 
-Color OrangeColor = Color(0xFF000000);
+// Define the orange color
+const Color OrangeColor = Color(0xFF000000);
 
-TextStyle DoinglyTitleStyle = TextStyle(
-    fontFamily: 'Poppins',
-    fontWeight: FontWeight.normal,
-    color: OrangeColor,
-    fontSize: 35,);
+// Define the text style for the Doingly title
+const TextStyle DoinglyTitleStyle = TextStyle(
+  fontFamily: 'Poppins',
+  fontWeight: FontWeight.normal,
+  color: OrangeColor,
+  fontSize: 35,
+);
 
-TextStyle DoinglyTodoTitle = TextStyle(
-    fontFamily: 'Poppins',
-    fontWeight: FontWeight.normal,
-    color: OrangeColor,
-    fontSize: 25,);
+// Define the text style for the Doingly todo title
+const TextStyle DoinglyTodoTitle = TextStyle(
+  fontFamily: 'Poppins',
+  fontWeight: FontWeight.normal,
+  color: OrangeColor,
+  fontSize: 25,
+);
 
-TextStyle darkTodoTitle = TextStyle(
-    fontFamily: 'Poppins',
-    fontWeight: FontWeight.normal,
-    color: OrangeColor,
-    fontSize: 30,);
+// Define the text style for the dark todo title
+const TextStyle darkTodoTitle = TextStyle(
+  fontFamily: 'Poppins',
+  fontWeight: FontWeight.normal,
+  color: OrangeColor,
+  fontSize: 30,
+);
 
-Color listColor = const Color.fromRGBO(244, 161, 138, 1);
+// Define the list color
+const Color listColor = Color.fromRGBO(244, 161, 138, 1);

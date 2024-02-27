@@ -4,10 +4,11 @@ import 'package:flutter_svg/svg.dart';
 class SocialIcon extends StatelessWidget {
   final String iconSrc;
   final VoidCallback onPressed;
+
   const SocialIcon({
     Key? key, 
     required this.iconSrc,
-     required this.onPressed,
+    required this.onPressed,
   }) : super(key: key);
 
   @override
@@ -19,18 +20,16 @@ class SocialIcon extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
           border: Border.all(
-            // width: 1,
-            color: Color(0xffF4A18A),
+            color: const Color(0xffF4A18A),
           ),
           shape: BoxShape.circle,
         ),
         child: SvgPicture.asset(
           iconSrc, 
-        height: 20,
-        width: 20,
+          height: 20,
+          width: 20,
         ),
       ),
     );
   }
 }
-

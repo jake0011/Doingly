@@ -6,108 +6,118 @@ import 'event_provider.dart';
 
 class EventViewPage extends StatelessWidget {
   final Event event;
+
   const EventViewPage({Key? key, required this.event}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-        appBar: AppBar(
-          leading: const CloseButton(),
-          title: Text('Your Timetable'),
-          backgroundColor: Color(0xffF4A18A),
-          actions: [
-            IconButton(
-              icon: Icon(Icons.edit),
-              onPressed: () => Navigator.of(context).pushReplacement(
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        leading: const CloseButton(),
+        title: const Text('Your Timetable'),
+        backgroundColor: const Color(0xffF4A18A),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.edit),
+            onPressed: () {
+              // Navigate to the EventEditingPage to edit the event
+              Navigator.of(context).pushReplacement(
                 MaterialPageRoute(
                   builder: (context) => EventEditingPage(
                     event: event,
                   ),
                 ),
+              );
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.delete),
+            onPressed: () {
+              // Delete the event using the EventProvider
+              final provider = Provider.of<EventProvider>(context, listen: true);
+              provider.deleteEvent(event);
+            },
+          ),
+        ],
+      ),
+      body: ListView(
+        padding: const EdgeInsets.all(30),
+        children: <Widget>[
+          buildDateTime(event),
+          const SizedBox(height: 2),
+          Padding(
+            padding: const EdgeInsets.all(3.0),
+            child: const Text(
+              "Your Timetable",
+              style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
+            ),
+          ),
+          const SizedBox(height: 10),
+          Padding(
+            padding: const EdgeInsets.all(0.0),
+            child: const Text(
+              "From:",
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
+          ),
+          const SizedBox(height: 10),
+          Padding(
+            padding: const EdgeInsets.all(3.0),
+            child: Text(
+              event.from.toString(),
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.normal,
               ),
             ),
-            IconButton(
-              icon: Icon(Icons.delete),
-              onPressed: () {
-                final provider =
-                    Provider.of<EventProvider>(context, listen: true);
-                provider.deleteEvent(event);
-              },
+          ),
+          const SizedBox(height: 20),
+          Padding(
+            padding: const EdgeInsets.all(0.0),
+            child: const Text(
+              "To:",
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
-          ],
-
-          //  buildViewingActions(context, event),
-        ),
-        body: ListView(
-          padding: EdgeInsets.all(30),
-          children: <Widget>[
-            buildDateTime(event),
-            const SizedBox(height: 2),
-            Padding(
-              padding: const EdgeInsets.all(3.0),
-              child: Text(
-                ("Your Timetable"),
-                style:
-                    const TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(height: 10),
+          Padding(
+            padding: const EdgeInsets.all(0.0),
+            child: Text(
+              event.to.toString(),
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.normal,
               ),
             ),
-            const SizedBox(height: 10),
-            Padding(
-              padding: const EdgeInsets.all(0.0),
-              child: Text(
-                ("From:"),
-                style:
-                    const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-              ),
+          ),
+          const SizedBox(height: 30),
+          const Text(
+            "Program/Class Name:",
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(height: 10),
+          Text(
+            event.title,
+            style: const TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.normal,
             ),
-            const SizedBox(height: 10),
-            Padding(
-              padding: const EdgeInsets.all(3.0),
-              child: Text(
-                event.from.toString(),
-                style: const TextStyle(
-                    fontSize: 16, fontWeight: FontWeight.normal),
-              ),
+          ),
+          const SizedBox(
+            height: 34,
+          ),
+          Text(
+            event.descriptiom,
+            style: const TextStyle(
+              color: Colors.black,
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
             ),
-            const SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.all(0.0),
-              child: Text(
-                ("To:"),
-                style:
-                    const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-              ),
-            ),
-            const SizedBox(height: 10),
-            Padding(
-              padding: const EdgeInsets.all(0.0),
-              child: Text(
-                event.to.toString(),
-                style: const TextStyle(
-                    fontSize: 16, fontWeight: FontWeight.normal),
-              ),
-            ),
-            const SizedBox(height: 30),
-            Text(
-              "Program/Class Name:",
-              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 10),
-            Text(
-              event.title,
-              style:
-                  const TextStyle(fontSize: 15, fontWeight: FontWeight.normal),
-            ),
-            const SizedBox(
-              height: 34,
-            ),
-            Text(event.descriptiom,
-                style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold)),
-          ],
-        ),
-      );
+          ),
+        ],
+      ),
+    );
+  }
 
   Widget buildDateTime(Event event) {
     return Column(
@@ -121,25 +131,4 @@ class EventViewPage extends StatelessWidget {
   Widget buildDate(String title, DateTime date) {
     return Container();
   }
-
-  // buildViewingActions(BuildContext context, Event event) {
-  //   IconButton(
-  //     icon: Icon(Icons.edit),
-  //     onPressed: () => Navigator.of(context).pushReplacement(
-  //       MaterialPageRoute(
-  //         builder: (context) => EventEditingPage(
-  //           event: event,
-  //         ),
-  //       ),
-  //     ),
-  //   );
-  //   IconButton(
-  //     icon: Icon(Icons.delete),
-  //     onPressed: () {
-  //       final provider = Provider.of<EventProvider>(context, listen: false);
-
-  //       provider.deleteEvent(event);
-  //     },
-  //   );
-  // }
 }

@@ -1,5 +1,3 @@
-// ignore_for_file: unnecessary_string_escapes, unused_local_variable
-
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -12,7 +10,6 @@ import '../../homepage/homepage.dart';
 
 class LoginBody extends StatelessWidget {
   const LoginBody({
-    
     Key? key,
   }) : super(key: key);
 
@@ -23,10 +20,9 @@ class LoginBody extends StatelessWidget {
     final TextEditingController passwordTEC = TextEditingController();
     final TextEditingController usernameTEC = TextEditingController();
 
+    // Function to get user data from the server
     Future getUserData() async {
       try {
-        // = await Dio().get('https://jsonplaceholder.typicode.com/posts/1', data:{'username': 'kofi','password': "ama"});
-
         var response = await Dio().post(
           'https://doingly.herokuapp.com/login',
           data: {'username': "malafaka", 'password': "lol"},
@@ -38,17 +34,11 @@ class LoginBody extends StatelessWidget {
     }
 
     Size size = MediaQuery.of(context).size;
-    // ignore: newline-before-return
+
     return Background(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          // Row(
-          //   crossAxisAlignment: CrossAxisAlignment.center,
-          //   children: const [
-          //     Icon(Icons.arrow_back_outlined),
-          //   ],
-          // ),
           Padding(
             padding: const EdgeInsets.all(10.0),
             child: Text(
@@ -89,14 +79,16 @@ class LoginBody extends StatelessWidget {
             onPressed: () async {
               print('login started');
               try {
-                var response = await Dio()
-                    .post('https://doingly.herokuapp.com/login', data: {
-                  'username': usernameTEC.text,
-                  'password': passwordTEC.text
-                });
+                var response = await Dio().post(
+                  'https://doingly.herokuapp.com/login',
+                  data: {
+                    'username': usernameTEC.text,
+                    'password': passwordTEC.text
+                  },
+                );
                 print(response.data.toString());
-                  String personName = response.data["personName"].toString();
-                  String personUserName = response.data["personUsername"].toString();
+                String personName = response.data["personName"].toString();
+                String personUserName = response.data["personUsername"].toString();
                 if (response.data['message'] == 'Success') {
                   var snackBar = SnackBar(content: Text('Login successful'));
                   ScaffoldMessenger.of(context).showSnackBar(snackBar);

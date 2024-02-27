@@ -3,15 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class SpalshScreen extends StatelessWidget {
-  const SpalshScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold();
-  }
-}
-
+// Splash Screen widget
 class SplashScreen extends StatefulWidget {
   SplashScreen({Key? key}) : super(key: key);
 
@@ -23,7 +15,8 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+    // Delay navigation to WelcomeScreen
+    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) async {
       await Future.delayed(Duration(seconds: 4)).then((value) {
         Navigator.push(
           context,
@@ -62,6 +55,7 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 
+  // Logo widget
   Widget _getLogo() {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -71,15 +65,17 @@ class _SplashScreenState extends State<SplashScreen> {
           height: 150,
         ),
         Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              "Doingly",
-              style: GoogleFonts.lora(
-                  textStyle: const TextStyle(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            "Doingly",
+            style: GoogleFonts.lora(
+              textStyle: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 25,
-              )),
-            ))
+              ),
+            ),
+          ),
+        ),
       ],
     );
   }

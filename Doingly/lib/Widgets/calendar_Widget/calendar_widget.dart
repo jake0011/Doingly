@@ -1,4 +1,3 @@
-// import 'package:calendarwidget/event_data_source.dart';
 import 'package:flutter/material.dart';
 import 'package:Doingly/Widgets/calendar_Widget/event_provider.dart';
 import '../../../../Widgets/calendar_Widget/tasks_widget.dart';
@@ -11,26 +10,25 @@ class CalendarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final events =Prov;
+    // Use the Consumer widget to listen for changes in the EventProvider
+    return Consumer<EventProvider>(
+      builder: (context, prov, _) {
+        return SfCalendar(
+          view: CalendarView.month,
+          dataSource: EventDataSource(prov.events),
+          initialSelectedDate: DateTime.now(),
+          cellBorderColor: Colors.transparent,
+          onLongPress: (details) {
+            prov.setDate(details.date!);
 
-    return  Consumer<EventProvider>(
-        builder: (context, prov, _) {
-          return SfCalendar(
-            view: CalendarView.month,
-            dataSource: EventDataSource(prov.events),
-            initialSelectedDate: DateTime.now(),
-            cellBorderColor: Colors.transparent,
-            onLongPress: (details) {
-              prov.setDate(details.date!);
-
-              showBottomSheet(
-                context: context,
-                builder: (context) => TaskWidget(),
-              );
-            },
-          );
-        },
-      
+            // Show the bottom sheet with the TaskWidget
+            showBottomSheet(
+              context: context,
+              builder: (context) => TaskWidget(),
+            );
+          },
+        );
+      },
     );
   }
 }

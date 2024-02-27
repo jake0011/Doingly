@@ -24,9 +24,9 @@ class ProfileWidget extends StatelessWidget {
     );
   }
 
+  // Builds the circular profile image
   Widget buildImage() {
     final image = AssetImage(imagePath);
-   
 
     return ClipOval(
       child: Material(
@@ -42,6 +42,7 @@ class ProfileWidget extends StatelessWidget {
     );
   }
 
+  // Builds the edit icon on top of the profile image
   Widget buildEditIcon(Color color) => buildCircle(
         color: Colors.white,
         all: 3,
@@ -56,6 +57,7 @@ class ProfileWidget extends StatelessWidget {
         ),
       );
 
+  // Builds a circular container with padding and a child widget
   Widget buildCircle({
     required Widget child,
     required double all,

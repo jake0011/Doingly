@@ -17,12 +17,12 @@ class TaskWidget extends StatefulWidget {
 class _TaskWidgetState extends State<TaskWidget> {
   @override
   Widget build(BuildContext context) {
-    // final provider = Provider.of<EventProvider>(context);
-
+    // Use Consumer widget to listen to changes in EventProvider
     return Consumer<EventProvider>(builder: (context, provider, _) {
       final selectedEvents = provider.eventsOfSelectedDate;
 
       if (selectedEvents.isEmpty) {
+        // Display a message when no events are found
         return const Center(
           child: Text(
             'No Events found',
@@ -30,6 +30,8 @@ class _TaskWidgetState extends State<TaskWidget> {
           ),
         );
       }
+
+      // Apply custom theme to the calendar
       return SfCalendarTheme(
         data: SfCalendarThemeData(
           timeTextStyle: const TextStyle(fontSize: 14, color: Colors.black),
@@ -46,6 +48,7 @@ class _TaskWidgetState extends State<TaskWidget> {
 
             final event = details.appointments!.first;
 
+            // Navigate to EventViewPage when an appointment is tapped
             Navigator.push(
               context,
               MaterialPageRoute(
@@ -58,6 +61,7 @@ class _TaskWidgetState extends State<TaskWidget> {
     });
   }
 
+  // Custom appointment builder for styling the appointments
   Widget appointmentBuilder(
     BuildContext context,
     CalendarAppointmentDetails details,

@@ -1,5 +1,3 @@
-// ignore_for_file: unused_local_variable
-
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,6 +14,7 @@ import '../../Login/components/ordivider_screen.dart';
 
 class Body extends StatelessWidget {
   final Widget child;
+
   Body({
     Key? key,
     required this.child,
@@ -27,9 +26,8 @@ class Body extends StatelessWidget {
 
   Future getUserData() async {
     try {
-      // = await Dio().get('https://jsonplaceholder.typicode.com/posts/1', data:{'username': 'kofi','password': "ama"});
-      var response =
-          await Dio().post('https://doingly.herokuapp.com/signup', data: {
+      // Send a POST request to the server with user data
+      var response = await Dio().post('https://doingly.herokuapp.com/signup', data: {
         'username': usernameTEC.text,
         'fullname': fullnameTEC.text,
         'password': passwordnameTEC.text
@@ -41,11 +39,8 @@ class Body extends StatelessWidget {
   }
 
   Widget build(BuildContext context) {
-    late String username;
-    late String password;
-    late String Fullname;
     Size size = MediaQuery.of(context).size;
-    // ignore: newline-before-return
+
     return Background(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -62,29 +57,26 @@ class Body extends StatelessWidget {
               ),
             ),
           ),
-          // RoundedInputField(
-          //   hintText: "First Name:",
-          //   // ignore: no-empty-block
-          //   onChanged: (value) {},
-          // ),
 
+          // Input field for full name
           RoundedInputField(
             controller: fullnameTEC,
             hintText: "Full Name:",
-            // ignore: no-empty-block
             onChanged: (value) {},
           ),
 
+          // Input field for username
           RoundedInputField(
             controller: usernameTEC,
             hintText: "Username:",
-            // ignore: no-empty-block
             onChanged: (value) {},
           ),
 
-          // ignore: no-empty-block
+          // Input field for password
           RoundedPasswordField(
-              passController: passwordnameTEC, onChanged: (value) {}),
+            passController: passwordnameTEC,
+            onChanged: (value) {},
+          ),
 
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 0.5),
@@ -93,22 +85,19 @@ class Body extends StatelessWidget {
               onPressed: () async {
                 print('login started');
                 try {
-                  var response = await Dio()
-                      .post('https://doingly.herokuapp.com/signup', data: {
+                  var response = await Dio().post('https://doingly.herokuapp.com/signup', data: {
                     'username': usernameTEC.text,
                     'fullname': fullnameTEC.text,
                     'password': passwordnameTEC.text
                   });
                   print(response.data.toString());
                   if (response.data['message'] == 'Success') {
-                    var snackBar =
-                        SnackBar(content: Text('Sign up successful'));
+                    var snackBar = SnackBar(content: Text('Sign up successful'));
                     ScaffoldMessenger.of(context).showSnackBar(snackBar);
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const LoginScreen(
-                        ),
+                        builder: (context) => const LoginScreen(),
                       ),
                     );
                   }
@@ -119,39 +108,40 @@ class Body extends StatelessWidget {
             ),
           ),
 
+          // Already have an account? Login instead
           AlreadyHaveAnAccountCheck(
             login: false,
             onPressed: () {
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => const LoginScreen(
-                        )),
+                  builder: (context) => const LoginScreen(),
+                ),
               );
             },
           ),
+
+          // Divider
           Ordivider(),
+
+          // Social icons
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               SocialIcon(
                 iconSrc: "assets/icons/twitter.svg",
-                // ignore: no-empty-block
                 onPressed: () {},
               ),
               SocialIcon(
                 iconSrc: "assets/icons/chat.svg",
-                // ignore: no-empty-block
                 onPressed: () {},
               ),
               SocialIcon(
                 iconSrc: "assets/icons/google-plus.svg",
-                // ignore: no-empty-block
                 onPressed: () {},
               ),
               SocialIcon(
                 iconSrc: "assets/icons/facebook.svg",
-                // ignore: no-empty-block
                 onPressed: () {},
               ),
             ],

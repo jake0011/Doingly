@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:Doingly/Screens/homepage/profilepage/model/user.dart';
 import 'package:Doingly/Screens/homepage/profilepage/utils/user_preferences.dart';
 import 'package:Doingly/Screens/homepage/profilepage/widget/appbar_widget.dart';
-import 'package:Doingly/Screens/homepage/profilepage//widget/button_widget.dart';
+import 'package:Doingly/Screens/homepage/profilepage/widget/button_widget.dart';
 import 'package:Doingly/Screens/homepage/profilepage/widget/profile_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -17,28 +17,28 @@ class _ProfilePageState extends State<ProfilePage> {
     final user = UserPreferences.myUser;
 
     return Scaffold(
-      appBar: buildAppBar(context),
+      appBar: buildAppBar(context), // Build the app bar
       body: ListView(
         physics: BouncingScrollPhysics(),
         children: [
           const SizedBox(height: 30),
           ProfileWidget(
             imagePath: user.imagePath,
-            // ignore: no-empty-block
-            onClicked: () async {},
+            onClicked: () async {}, // Empty click handler
           ),
           const SizedBox(height: 10),
-          buildName(user),
+          buildName(user), // Build the user's name and email
           const SizedBox(height: 30),
-          Center(child: buildAbout(user)),
+          Center(child: buildAbout(user)), // Build the user's about section
           const SizedBox(height: 60),
-          Center(child: buildSupportButton()),
+          Center(child: buildSupportButton()), // Build the support button
           const SizedBox(height: 20),
         ],
       ),
     );
   }
 
+  // Build the user's name and email
   Widget buildName(User user) => Column(
         children: [
           Text(
@@ -53,16 +53,16 @@ class _ProfilePageState extends State<ProfilePage> {
         ],
       );
 
+  // Build the support button
   Widget buildSupportButton() => ButtonWidget(
         text: 'Support Us!',
-        // ignore: no-empty-block
         onClicked: () {
-          _launchUrl();
+          _launchUrl(); // Launch the URL when the button is clicked
         },
       );
 
+  // Build the user's about section
   Widget buildAbout(User user) => Container(
-        // padding: EdgeInsets.symmetric(horizontal: 48),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -87,12 +87,13 @@ class _ProfilePageState extends State<ProfilePage> {
           borderRadius: BorderRadius.circular(10),
         ),
       );
-}
 
-Future<void> _launchUrl() async {
-  final Uri _url = Uri.parse(
-      'https://github.com/Leetcoders-Todo-App/Front-End/tree/Staging');
-  if (!await launchUrl(_url)) {
-    throw 'Could not launch $_url';
+  // Launch the URL
+  Future<void> _launchUrl() async {
+    final Uri _url = Uri.parse(
+        'https://github.com/Leetcoders-Todo-App/Front-End/tree/Staging');
+    if (!await launchUrl(_url)) {
+      throw 'Could not launch $_url';
+    }
   }
 }
