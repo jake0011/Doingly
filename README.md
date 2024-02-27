@@ -7,5 +7,5 @@ This codebase represents the front-end portion of the Leetcoders Todo App projec
 3. Awuletey Catherine Naa Larteley
 4. Kwaw Kumi Miezah
 
-The purpose of this codebase is to provide a user-friendly interface for managing todo tasks. It utilizes JavaScript for the implementation.
+The purpose of this codebase is to provide a user-friendly interface for managing todo tasks. It utilizes Flutter for the implementation.
 
